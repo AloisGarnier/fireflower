@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /panier
+Disallow: /compte
+Disallow: /nouvelle-decoration
+Disallow: /commandes
+Disallow: /gestion
+Disallow: /livraison
+Allow : /
