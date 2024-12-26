@@ -1,0 +1,1 @@
+export const ludotheque = {nom : "Ludothèque", chemin : "/ludotheque", sousoptions : [{nom : "test1"}]}
