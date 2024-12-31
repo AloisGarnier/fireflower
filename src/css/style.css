@@ -16,7 +16,7 @@ html {
 }
 
 .my-app {
-  --bg: #EBEBEB;
+  --bg: #392338;
 	background: var(--bg);
   --static: #2D2D2D;
 	--solid: #FFF;
@@ -29,18 +29,50 @@ html {
 	width: 100%;
 }
 
+/*=========== content =============*/
+
+.my-main-content {
+	height: 100% !important;
+	width: 100% !important;
+	display: flex !important;
+	flex-direction: row !important;
+	align-items: center !important;
+	justify-content: space-around !important;
+}
+
+.btn-nullified {
+	background-color: transparent !important;
+	color: transparent !important;
+}
+
+.my-form-select {
+	width: 100px !important;
+}
+
+.red-text {
+	color: #800020 !important;
+}
+
+.white-text {
+	color: white !important;
+}
+
+.btn-not-capitalized {
+	text-transform: capitalize !important
+}
+
 /*=========== circular menu =============*/
 
 body {
 	padding: 0;
 	margin: 0;
-	background-color: #392338;
+	background-color: transparent;
 	color: #fff;
   }
   body * {
 	box-sizing: border-box;
   }
-  .icon {
+  .cm-icon {
 	position: absolute;
 	top: 70%;
 	left: 70%;
@@ -80,7 +112,7 @@ body {
 	z-index: 13;
 	width: 243.33333333333334px;
 	height: 243.33333333333334px;
-	background-color: #392338;
+	background-color: transparent;
 	overflow: hidden;
   }
   .menu__active {
@@ -172,7 +204,7 @@ body {
 	height: 50%;
 	transform-origin: 0 100%;
   }
-  .circle li .placeholder {
+  .circle li .cm-placeholder {
 	position: absolute;
 	left: -100%;
 	padding-top: 1.5em;
@@ -181,17 +213,17 @@ body {
 	text-align: center;
 	transform: skewY(54deg) rotate(18deg);
   }
-  .circle li .placeholder .upside {
+  .circle li .cm-placeholder .upside {
 	transform: rotate(180deg);
   }
-  .circle li .placeholder a {
+  .circle li .cm-placeholder a {
 	text-decoration: none;
 	pointer-events: auto;
   }
-  .circle li .placeholder button {
+  .circle li .cm-placeholder button {
 	pointer-events: auto;
   }
-  .circle li .placeholder .button {
+  .circle li .cm-placeholder .cm-button {
 	font-size: 2.3em;
 	background-color: transparent;
 	border: none;
@@ -269,7 +301,7 @@ body {
 	transition-property: bottom, transform;
 	transition-duration: 0.25s, 1s;
   }
-  #menu__active:checked ~ label .button:hover {
+  #menu__active:checked ~ label .cm-button:hover {
 	color: #c1264e;
   }
   #menu__active:checked ~ label .menu__arrow {

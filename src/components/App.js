@@ -1,12 +1,12 @@
-import React from "react";
+import React from "react"
 
-import IconeJeu from "./units/IconeJeu.js";
+import "../css/style.css"
+import "../css/lumen.css"
+import "../css/fontawesome.all.min.css"
+import MenuPrincipal from "./units/MenuPrincipal.js"
+import Calendrier from "./pages/Calendrier.js"
 
-import "../css/style.css";
-import "../css/lumen.css";
-import "../css/fontawesome.all.min.css";
-import { Helmet } from "react-helmet";
-import MenuPrincipal from "./units/MenuPrincipal.js";
+import {Route, Routes, Link, useNavigate} from "react-router-dom";
 
 export default function App() {
 
@@ -14,21 +14,15 @@ export default function App() {
 
   return( 
       <div class="my-app">
-        <MenuPrincipal />
-        <div class="overflow-scroll">
-        <IconeJeu jeu={ {image : "https://drive.google.com/thumbnail?id=1Aqyirc2kAZD4Hgfu_2Nc5NclGqDhpOQq&sz=w1000"} }></IconeJeu>
-          <IconeJeu jeu={ {image : "https://drive.google.com/thumbnail?id=1Aqyirc2kAZD4Hgfu_2Nc5NclGqDhpOQq&sz=w1000"} }></IconeJeu>
-          <IconeJeu jeu={ {image : "https://drive.google.com/thumbnail?id=1Aqyirc2kAZD4Hgfu_2Nc5NclGqDhpOQq&sz=w1000"} }></IconeJeu>
-          <IconeJeu jeu={ {image : "https://drive.google.com/thumbnail?id=1Aqyirc2kAZD4Hgfu_2Nc5NclGqDhpOQq&sz=w1000"} }></IconeJeu>
-          <IconeJeu jeu={ {image : "https://drive.google.com/thumbnail?id=1Aqyirc2kAZD4Hgfu_2Nc5NclGqDhpOQq&sz=w1000"} }></IconeJeu>
-          <IconeJeu jeu={ {image : "https://drive.google.com/thumbnail?id=1Aqyirc2kAZD4Hgfu_2Nc5NclGqDhpOQq&sz=w1000"} }></IconeJeu>
-          <IconeJeu jeu={ {image : "https://drive.google.com/thumbnail?id=1Aqyirc2kAZD4Hgfu_2Nc5NclGqDhpOQq&sz=w1000"} }></IconeJeu>
-          <IconeJeu jeu={ {image : "https://drive.google.com/thumbnail?id=1Aqyirc2kAZD4Hgfu_2Nc5NclGqDhpOQq&sz=w1000"} }></IconeJeu>
-          <IconeJeu jeu={ {image : "https://drive.google.com/thumbnail?id=1Aqyirc2kAZD4Hgfu_2Nc5NclGqDhpOQq&sz=w1000"} }></IconeJeu>
-          <IconeJeu jeu={ {image : "https://drive.google.com/thumbnail?id=1Aqyirc2kAZD4Hgfu_2Nc5NclGqDhpOQq&sz=w1000"} }></IconeJeu>
-          <IconeJeu jeu={ {image : "https://drive.google.com/thumbnail?id=1Aqyirc2kAZD4Hgfu_2Nc5NclGqDhpOQq&sz=w1000"} }></IconeJeu>
-          <IconeJeu jeu={ {image : "https://drive.google.com/thumbnail?id=1Aqyirc2kAZD4Hgfu_2Nc5NclGqDhpOQq&sz=w1000"} }></IconeJeu>
-          <IconeJeu jeu={ {image : "https://drive.google.com/thumbnail?id=1Aqyirc2kAZD4Hgfu_2Nc5NclGqDhpOQq&sz=w1000"} }></IconeJeu>
+        <MenuPrincipal/>
+        
+        <div class="my-main-content">
+          <Routes>
+            <Route exact path="/calendrier" element={
+              <Calendrier
+              domain={domain}
+            />}></Route>
+          </Routes>
         </div>
       </div>
       );
