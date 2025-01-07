@@ -123,7 +123,7 @@ export default function CalendrierWidget(props) {
     }
 
     return(
-        <div class="d-flex flex-column align-items-center justify-items-center">
+        <div class="d-flex flex-column align-self-center align-items-center justify-items-center">
             {displayTopButtons()}
             {daysOfWeek()}
             <div class="btn-toolbar d-flex flex-column mb-5" role="toolbar" aria-label="Toolbar with button groups">

@@ -3,25 +3,25 @@ import React from "react"
 // Options du menu principal
 export const menuOptions = [
     // 2e option
-    {chemin : "/test", icone : "fa fa-pen"},
+    {chemin : "/finances", icone : "fa fa-money-bill-trend-up"},
     // 1re option
     {chemin : "/calendrier", icone : "fa fa-calendar-days"},
     // N'apparait pas 
-    {chemin : "/test", icone : "fa fa-user"},
+    {chemin : "/utilisateurs", icone : "fa fa-user"},
     // 9e option
-    {chemin : "/test", icone : "fa fa-gears"},
+    {chemin : "/options", icone : "fa fa-gears"},
     // 8e option
-    {chemin : "/test", icone : "fa fa-user"}, 
+    {chemin : "/utilisateurs", icone : "fa fa-user"}, 
     // 7e option
-    {chemin : "/test", icone : "fa fa-gamepad"}, 
+    {chemin : "/jeux", icone : "fa fa-gamepad"}, 
     // 6e option
-    {chemin : "/test", icone : "fa fa-utensils"}, 
+    {chemin : "/repas", icone : "fa fa-utensils"}, 
     // 5e option
-    {chemin : "/test", icone : "fa fa-person-running"},
+    {chemin : "/sport", icone : "fa fa-person-running"},
     // 4e option
-    {chemin : "/test", icone : "fa fa-weight-scale"},
+    {chemin : "/poids", icone : "fa fa-weight-scale"},
     // 3e option
-    {chemin : "/test", icone : "fa fa-money-bill-trend-up"}
+    {chemin : "/ecriture", icone : "fa fa-feather"}
 ]
 
 // Gestion des dates
@@ -43,6 +43,22 @@ export const mois = [
     { value: 12, label: 'Décembre' },
   ]
 
+export const moisTouteAnnee = [
+    { value: 0, label: 'Toute l\'année'},
+    { value: 1, label: 'Janvier' },
+    { value: 2, label: 'Février' },
+    { value: 3, label: 'Mars' },
+    { value: 4, label: 'Avril' },
+    { value: 5, label: 'Mai' },
+    { value: 6, label: 'Juin' },
+    { value: 7, label: 'Juillet' },
+    { value: 8, label: 'Août' },
+    { value: 9, label: 'Septembre' },
+    { value: 10, label: 'Octobre' },
+    { value: 11, label: 'Novembre' },
+    { value: 12, label: 'Décembre' },
+]
+
 export function first(number) {
     if(number == 1) {
         return(<>1<sup>er</sup></>)
@@ -55,3 +71,15 @@ export function displayDate(date) {
 }
 
 export const fetesFixes = [101, 105, 111, 805, 1111, 1407, 1508, 2512]
+
+// Changer un élément d'un tableau dans un useState
+export function updateValue(stateItem, setStateFunction, index, newValue) {
+    setStateFunction([...stateItem.slice(0, index), newValue, ...stateItem.slice(index + 1)])
+}
+
+//Unités dans les inputs
+export function unite(props) {
+    if(props.unit) {
+        return(<span class="input-group-text">{props.unit}</span>)
+    }
+}
