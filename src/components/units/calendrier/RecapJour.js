@@ -40,6 +40,9 @@ export default function RecapJour(props) {
                 </ul>
             )
         }
+        return(
+            <br/>
+        )
     }
 
     function displaySport() {
@@ -57,6 +60,9 @@ export default function RecapJour(props) {
                 </ul>
             )
         }
+        return(
+            <br/>
+        )
     }
 
     function displayMeal(dish) {
@@ -104,6 +110,9 @@ export default function RecapJour(props) {
                 </div>
             )
         }
+        return(
+            <br/>
+        )
     }
 
     return(
