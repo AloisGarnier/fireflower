@@ -12,16 +12,6 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     publicPath: "/"
   },
-  devServer: {
-    historyApiFallback: true,
-    allowedHosts: [
-      '34.155.149.97',
-      'mille-arts.fr',
-      'www.mille-arts.fr',
-      '34.163.13.68',
-      'localhost'
-       ]
-  },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
