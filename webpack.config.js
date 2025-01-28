@@ -12,6 +12,12 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     publicPath: "/"
   },
+  devServer: {
+    historyApiFallback: true,
+    allowedHosts: [
+      '34.155.210.161'
+       ]
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
