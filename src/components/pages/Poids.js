@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import LineChart from "../units/LineChart"
+import LineChart from "../units/general units/LineChart"
 import Select from 'react-select'
 
 import * as cst from "../constants"
@@ -25,18 +25,10 @@ export default function Poids(props) {
         }
     }
 
-    function populateSeriesX() {
-        var tempX = []
-        for(var i=0; i<series.length; i++) {
-            tempX.push(series[i].date)
-        }
-        return(tempX)
-    }
-
     function populateSeriesY() {
         var tempY = []
         for(var i=0; i<series.length; i++) {
-            tempY.push(series[i].weight)
+            tempY.push([series[i].date, series[i].weight])
         }
         return(tempY)
     }
@@ -75,6 +67,41 @@ export default function Poids(props) {
         )
     }
 
+    function displayBottomInfo() {
+        if(series[0] && series[1]) {
+            var diff = series[series.length-1].weight - series[0].weight
+            var diffTemps = (new Date(series[series.length-1].date) - new Date(series[0].date))/(1000*3600*24)
+            var diffParJour = cst.decimalRound(diff/diffTemps, 2)
+            var restePourSurpoids = cst.decimalRound((series[series.length-1].weight - cst.surpoids)/diffParJour, 0)
+            var restePourPoidsNormal = cst.decimalRound((series[series.length-1].weight - cst.normal)/diffParJour, 0)
+
+            var firstSentence = ""
+            if(diff < 0) {
+                firstSentence = "Sur cette période, j'ai perdu "+ (-diff) +" kg, soit " +(-diffParJour) +" kg/jour en moyenne."
+            } else {
+                firstSentence = "Sur cette période, j'ai pris "+ diff +" kg, soit " + diffParJour +" kg/jour en moyenne."
+            }
+
+            var secondSentence = ""
+            if(diff < 0 && restePourSurpoids < 0) {
+                secondSentence = "A ce rythme, il me reste "+ (-restePourSurpoids)+" jours avant de quitter l'obésité"
+            }
+
+            var thirdSentence = ""
+            if(diff < 0 && restePourSurpoids < 0) {
+                thirdSentence = " et "+ (-restePourPoidsNormal)+" jours avant de retrouver un poids normal"
+            } else if(diff < 0 && restePourPoidsNormal < 0) {
+                thirdSentence = "A ce rythme, il me reste "+ (-restePourPoidsNormal)+" jours avant de retrouver un poids normal"
+            }
+    
+            return(
+                <div class="my-5 my-notes">
+                    {firstSentence}<br/>{secondSentence}{thirdSentence}
+                </div>
+            )
+        }
+    }
+
     return(
         <div class="d-flex flex-column w-50 align-self-center align-items-center justify-items-center">
             {displayTopButtons()}
@@ -82,10 +109,10 @@ export default function Poids(props) {
                 titre="Evolution du poids"
                 titreX="Date"
                 titreY="Poids (kg)"
-                catX={populateSeriesX()}
                 titreSeries={["Poids"]}
                 donneeSeries={[populateSeriesY()]}
             />
+            {displayBottomInfo()}
         </div>
     )
 }

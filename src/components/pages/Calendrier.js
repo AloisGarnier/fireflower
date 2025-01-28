@@ -1,6 +1,7 @@
 import React, { useState } from "react"
-import CalendrierWidget from "../units/CalendrierWidget"
-import FormulaireQuotidien from "../units/FormulaireQuotidien";
+import CalendrierWidget from "../units/calendrier/CalendrierWidget"
+import FormulaireQuotidien from "../units/calendrier/FormulaireQuotidien";
+import RecapJour from "../units/calendrier/RecapJour";
 
 /*
  * Props :
@@ -9,16 +10,25 @@ import FormulaireQuotidien from "../units/FormulaireQuotidien";
 export default function Calendrier(props) {
 
     const [selectedDay, setSelectedDay] = useState(new Date())
+    const [hasChanged, setHasChanged] = useState(false)
 
     return(
         <div class="d-flex flex-wrap justify-content-around w-100 h-100">
-            <CalendrierWidget 
-                selectedDay={selectedDay} 
-                setSelectedDay={setSelectedDay}
-            />
+            <div class="d-flex flex-column">
+                <CalendrierWidget 
+                    selectedDay={selectedDay} 
+                    setSelectedDay={setSelectedDay}
+                />
+                <RecapJour 
+                    selectedDay={selectedDay}
+                    domain={props.domain}
+                    hasChanged={hasChanged}
+                />
+            </div>
             <FormulaireQuotidien 
                 selectedDay={selectedDay}
                 domain={props.domain}
+                setHasChanged={setHasChanged}
             />
         </div> 
     );

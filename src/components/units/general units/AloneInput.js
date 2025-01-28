@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-import * as cst from "../constants"
+import * as cst from "../../constants"
 
 /*
  * Props :

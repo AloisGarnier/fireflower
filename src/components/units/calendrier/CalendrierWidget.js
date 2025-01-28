@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import JourCalendrier from "./JourCalendrier"
-import * as cst from "../constants"
+import * as cst from "../../constants"
 import Select from 'react-select'
 
 /*
@@ -123,7 +123,7 @@ export default function CalendrierWidget(props) {
     }
 
     return(
-        <div class="d-flex flex-column align-self-center align-items-center justify-items-center">
+        <div class="d-flex flex-column align-self-start align-items-center my-5">
             {displayTopButtons()}
             {daysOfWeek()}
             <div class="btn-toolbar d-flex flex-column mb-5" role="toolbar" aria-label="Toolbar with button groups">

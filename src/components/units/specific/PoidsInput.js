@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react"
-import AloneInput from "./AloneInput"
+import AloneInput from "../general units/AloneInput"
+
+import * as cst from "../../constants"
 
 /*
  * Props :
@@ -20,14 +22,11 @@ export default function PoidsInput(props) {
         } else {
             setInputValue("")
         }
+        props.setHasChanged(hasChanged => !hasChanged)
     }
 
     function refreshInputValue() {
-        var d = props.selectedDay.getDate()
-        var m = props.selectedDay.getMonth() + 1
-        var y = props.selectedDay.getFullYear()
-        var param = d + "/" + m + "/" + y
-        fetch(backUrl + "byDay/" + param)
+        fetch(backUrl + "byDay/" + cst.paramDMY(props))
             .then(response => response.json())
             .then(json => setInputValueIfNotNull(json))
     }
@@ -48,10 +47,7 @@ export default function PoidsInput(props) {
     function sendPoids(inputValue) {
         var kg = inputValue.split(",")[0]
         var g = inputValue.split(",")[1] ? formatGrams(inputValue.split(",")[1]) : 0
-        var day = props.selectedDay.getDate()
-        var month = props.selectedDay.getMonth() + 1
-        var year = props.selectedDay.getFullYear()
-        var url = kg + '/' + g + '/' + day + '/' + month + '/' + year
+        var url = kg + '/' + g + '/' + cst.paramDMY(props)
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

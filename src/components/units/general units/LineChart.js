@@ -5,7 +5,6 @@ import HighchartsReact  from "highcharts-react-official"
 /*
  * Props :
  *  - titre 
- *  - catX (nom des catégories sur l'axe X)
  *  - titreX (titre de l'axe X)
  *  - titreY (titre de l'axe Y)
  *  - titreSeries (titres des series)
@@ -28,10 +27,10 @@ export default function LineChart(props) {
             text: props.titre
         },
         xAxis: {
-            categories: props.catX,
             title: {
                 text: props.titreX
-            }
+            },
+            type: 'datetime'
         },
         yAxis: {
             title: {

@@ -13,6 +13,8 @@ html {
 	font-family: 'Oxygen';
 	color: var(--static);
 	user-select: none;
+	--bg: #392338;
+	background: var(--bg);
 }
 
 .my-app {
@@ -32,6 +34,8 @@ html {
 /*=========== content =============*/
 
 .my-main-content {
+	--bg: #392338;
+	background: var(--bg);
 	height: 100% !important;
 	width: 100% !important;
 	display: flex !important;
@@ -59,6 +63,22 @@ html {
 
 .btn-not-capitalized {
 	text-transform: capitalize !important
+}
+
+.width-form {
+	width: 33% !important;
+}
+
+.my-notes {
+	color: white !important;
+}
+
+.min-w-50 {
+	min-width: 50% !important;
+}
+
+ul, li {
+	margin-bottom: 0 !important;
 }
 
 /*=========== circular menu =============*/
