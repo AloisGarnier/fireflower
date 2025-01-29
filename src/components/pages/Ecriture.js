@@ -132,7 +132,7 @@ export default function Ecriture(props) {
     }
 
     return(
-        <div class="d-flex flex-row">
+        <div class="d-flex sm-col-lg-row">
             <div class="d-flex flex-column align-self-center align-items-center justify-items-center mx-5">
                 {displayTopButtons()}
                 <LineChart

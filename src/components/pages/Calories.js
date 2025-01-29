@@ -135,7 +135,7 @@ export default function Calories(props) {
     }
 
     return(
-        <div class="d-flex flex-row align-self-center align-items-center justify-items-center">
+        <div class="d-flex sm-col-lg-row">
             <div class="d-flex flex-column align-self-center align-items-center justify-items-center mx-5">
                 {displayTopButtons()}
                 <StackedAreaChart

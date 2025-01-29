@@ -66,7 +66,7 @@ html {
 }
 
 .width-form {
-	width: 33% !important;
+	min-width: 33% !important;
 }
 
 .my-notes {
@@ -80,6 +80,19 @@ html {
 ul, li {
 	margin-bottom: 0 !important;
 }
+
+@media only screen and (max-width: 480px) {
+	.sm-col-lg-row {
+		flex-direction: column !important;
+		max-width: 90% !important;
+	}
+  }
+  
+  @media only screen and (min-width: 480px) {
+	.sm-col-lg-row {
+		flex-direction: row !important;
+	}
+  }
 
 /*=========== circular menu =============*/
 
