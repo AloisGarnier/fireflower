@@ -69,9 +69,9 @@ export default function Poids(props) {
 
     function displayBottomInfo() {
         if(series[0] && series[1]) {
-            var diff = series[series.length-1].weight - series[0].weight
+            var diff = cst.decimalRound(series[series.length-1].weight - series[0].weight, 1)
             var diffTemps = (new Date(series[series.length-1].date) - new Date(series[0].date))/(1000*3600*24)
-            var diffParJour = cst.decimalRound(diff/diffTemps, 2)
+            var diffParJour = cst.decimalRound(diff/diffTemps, 1)
             var restePourSurpoids = cst.decimalRound((series[series.length-1].weight - cst.surpoids)/diffParJour, 0)
             var restePourPoidsNormal = cst.decimalRound((series[series.length-1].weight - cst.normal)/diffParJour, 0)
 
