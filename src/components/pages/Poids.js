@@ -6,12 +6,12 @@ import * as cst from "../constants"
 
 export default function Poids(props) {
 
-    const [selectedMonth, setSelectedMonth] = useState([new Date().getMonth() + 1, new Date().getFullYear()])
+    const [selectedMonth, setSelectedMonth] = useState([0, new Date().getFullYear()])
     const [series, setSeries] = useState("")
 
     const backUrl = props.domain + "/weight/"
 
-    useEffect(() => refreshValues(new Date().getMonth() + 1, new Date().getFullYear()), [])
+    useEffect(() => refreshValues(0, new Date().getFullYear()), [])
 
     function refreshValues(newMonth, newYear) {
         if(newMonth == 0) {

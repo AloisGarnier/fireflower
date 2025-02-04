@@ -9,14 +9,14 @@ import NouveauLivre from "../units/specific/NouveauLivre"
 
 export default function Ecriture(props) {
 
-    const [selectedMonth, setSelectedMonth] = useState([new Date().getMonth() + 1, new Date().getFullYear()])
+    const [selectedMonth, setSelectedMonth] = useState([0, new Date().getFullYear()])
     const [selectedBook, setSelectedBook] = useState(1)
     const [books, setBooks] = useState([])
     const [series, setSeries] = useState("")
 
     const backUrl = props.domain + "/writing/"
 
-    useEffect(() => refreshValues(new Date().getMonth() + 1, new Date().getFullYear()), [])
+    useEffect(() => refreshValues(0, new Date().getFullYear()), [])
     useEffect(() => fetchBooks(), [])
 
     function processBooks(json) {

@@ -11,7 +11,7 @@ import NouvelAlimentExercise from "../units/specific/NouvelAlimentExercise"
 
 export default function Calories(props) {
 
-    const [selectedMonth, setSelectedMonth] = useState([new Date().getMonth() + 1, new Date().getFullYear()])
+    const [selectedMonth, setSelectedMonth] = useState([0, new Date().getFullYear()])
     const [series, setSeries] = useState("")
 
     const backUrl = props.domain + "/calories/"
@@ -22,7 +22,7 @@ export default function Calories(props) {
     const sportUrl = props.domain + "/sport/"
     const foodUrl = props.domain + "/food/"
 
-    useEffect(() => refreshValues(new Date().getMonth() + 1, new Date().getFullYear()), [])
+    useEffect(() => refreshValues(0, new Date().getFullYear()), [])
     useEffect(() => fetchExercises(), [])
     useEffect(() => fetchAliments(), [])
 
