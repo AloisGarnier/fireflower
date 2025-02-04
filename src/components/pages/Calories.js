@@ -112,7 +112,7 @@ export default function Calories(props) {
             return(
                 <div class="my-5 my-notes">
                     Sur cette période, j'ai brûlé {total} kcal, soit {moyenne} kcal/jour en moyenne.<br/>
-                    Cela correspond à environ {totalKg} kg de perdus, soit {moyenneKg} kg par jour.
+                    Cela correspond à environ {totalKg} kg perdus, soit {moyenneKg} kg par jour.
                 </div>
             )
         }

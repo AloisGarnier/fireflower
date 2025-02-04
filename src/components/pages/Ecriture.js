@@ -81,7 +81,7 @@ export default function Ecriture(props) {
             annees.push({ value: a, label: a+'' })
         }
 
-        var defaultMonth = cst.mois[selectedMonth[0] - 1]
+        var defaultMonth = cst.moisTouteAnnee[selectedMonth[0]]
         var defaultYear = annees[selectedMonth[1] - 2001]
 
         return(
