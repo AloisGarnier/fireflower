@@ -159,7 +159,7 @@ export default function Calories(props) {
                     item="exercise"
                 />
             </div>
-            <div class="d-flex flex-column align-self-center align-items-center justify-items-center mx-5">
+            <div class="d-flex flex-column align-self-center align-items-center justify-items-center mx-5 mh-100">
             <label class="my-notes">Liste des aliments :</label>
                 <TableRecap 
                     titreColonnes={["Nom", "Calories absorbées par unité", "Unité"]}
