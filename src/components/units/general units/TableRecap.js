@@ -27,7 +27,7 @@ export default function TableRecap(props) {
         return body
     }
 
-    return(<table class="table table-hover my-3">
+    return(<table class="table table-hover my-3 overflow-scroll">
                 <thead>
                     <tr>
                         {populateHead()}
