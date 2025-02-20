@@ -77,8 +77,8 @@ html {
 	min-width: 50% !important;
 }
 
-.mh-75 {
-	max-height: 75% !important;
+.mh-500 {
+	max-height: 500px !important;
 }
 
 ul, li {

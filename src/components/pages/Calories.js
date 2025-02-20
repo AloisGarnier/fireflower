@@ -159,8 +159,8 @@ export default function Calories(props) {
                     item="exercise"
                 />
             </div>
-            <div class="d-flex flex-column align-self-center align-items-center justify-items-center mx-5 overflow-scroll">
-            <label class="my-notes">Liste des aliments :</label>
+            <div class="d-flex flex-column align-self-center align-items-center justify-items-center mx-5">
+                <label class="my-notes">Liste des aliments :</label>
                 <TableRecap 
                     titreColonnes={["Nom", "Calories absorbées par unité", "Unité"]}
                     donnees={foodTable()}
