@@ -77,6 +77,10 @@ html {
 	min-width: 50% !important;
 }
 
+.mh-75 {
+	max-height: 75% !important;
+}
+
 ul, li {
 	margin-bottom: 0 !important;
 }
