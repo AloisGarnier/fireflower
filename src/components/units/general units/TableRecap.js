@@ -27,14 +27,17 @@ export default function TableRecap(props) {
         return body
     }
 
-    return(<table class="table table-hover my-3 mh-500 overflow-scroll">
-                <thead>
-                    <tr>
-                        {populateHead()}
-                    </tr>
-                </thead>
-                <tbody>
-                    {populateBody()}
-                </tbody>
-            </table>)
+    return(
+    <div class="mh-500 overflow-scroll">
+        <table class="table table-hover my-3">
+            <thead>
+                <tr>
+                    {populateHead()}
+                </tr>
+            </thead>
+            <tbody>
+                {populateBody()}
+            </tbody>
+        </table>
+    </div>)
 }
