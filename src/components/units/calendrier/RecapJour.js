@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 
 import * as cst from "../../constants"
+import { Accordion } from "react-bootstrap"
 
 /*
  * Props :
@@ -26,7 +27,6 @@ export default function RecapJour(props) {
 
     function displayBooks() {
         if(recap.books && recap.books.length > 0) {
-            console.log(recap.books)
             var books = []
             for(var i=0; i<recap.books.length; i++) {
                 books.push(
@@ -93,20 +93,40 @@ export default function RecapJour(props) {
                         break
                 }
             }
+            var result = []
+            if(breakfast.length > 0) {
+                result.push(
+                    <>
+                        &nbsp; &nbsp; <strong><em>Petit-déjeuner :</em></strong> <br/>
+                        <ul>
+                            {breakfast}
+                        </ul>
+                    </>
+                )
+            }
+            if(lunch.length > 0) {
+                result.push(
+                    <>
+                        &nbsp; &nbsp; <strong><em>Déjeuner :</em></strong>  <br/>
+                        <ul>
+                            {lunch}
+                        </ul>
+                    </>
+                )
+            }
+            if(dinner.length > 0) {
+                result.push(
+                    <>
+                        &nbsp; &nbsp; <strong><em>Dîner :</em></strong> <br/>
+                        <ul>
+                            {dinner}
+                        </ul>
+                    </>
+                )
+            }
             return(
                 <div>
-                    &nbsp; &nbsp; <strong><em>Petit-déjeuner :</em></strong> <br/>
-                    <ul>
-                        {breakfast}
-                    </ul>
-                    &nbsp; &nbsp; <strong><em>Déjeuner :</em></strong>  <br/>
-                    <ul>
-                        {lunch}
-                    </ul>
-                    &nbsp; &nbsp; <strong><em>Dîner :</em></strong> <br/>
-                    <ul>
-                        {dinner}
-                    </ul>
+                    {result}
                 </div>
             )
         }
@@ -116,11 +136,39 @@ export default function RecapJour(props) {
     }
 
     return(
-        <div class="my-notes">
-            <strong>Livres :</strong> {displayBooks()}
-            <strong>Poids :</strong> {recap.weight} kg <br/>
-            <strong>Sport :</strong> {displaySport()}
-            <strong>Repas :</strong> {displayMeals()}
-        </div>
+        <Accordion>
+            <Accordion.Item eventKey="0">
+                <Accordion.Header>
+                    <strong>Livres</strong>
+                </Accordion.Header>
+                <Accordion.Body>
+                    {displayBooks()}
+                </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="1">
+                <Accordion.Header>
+                    <strong>Poids</strong>
+                </Accordion.Header>
+                <Accordion.Body>
+                    {recap.weight} {recap.weight ? "kg" : "/"}
+                </Accordion.Body>
+            </Accordion.Item >
+            <Accordion.Item eventKey="2">
+                <Accordion.Header>
+                    <strong>Sport : &nbsp;</strong> {recap.spent} kcal
+                </Accordion.Header>
+                <Accordion.Body>
+                    {displaySport()}
+                </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="3">
+                <Accordion.Header>
+                    <strong>Repas : &nbsp;</strong> {recap.ingested} kcal
+                </Accordion.Header>
+                <Accordion.Body>
+                    {displayMeals()}
+                </Accordion.Body>
+            </Accordion.Item>
+        </Accordion>
     )
 }

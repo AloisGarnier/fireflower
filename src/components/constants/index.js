@@ -59,6 +59,20 @@ export const moisTouteAnnee = [
     { value: 12, label: 'Décembre' },
 ]
 
+export const plageDeTemps = [
+    { value: 24, label: 'sur les 24 derniers mois'},
+    { value: 12, label: 'sur les 12 derniers mois' },
+    { value: 6, label: 'sur les 6 derniers mois' },
+    { value: 3, label: 'sur les 3 derniers mois' },
+    { value: 1, label: 'sur le dernier mois' },
+]
+
+export const pasDeTemps = [
+    { value: 'j', label: 'par jour'},
+    { value: 's', label: 'par semaine' },
+    { value: 'm', label: 'par mois' },
+]
+
 //Gestion du temps
 export const milliSecondsInDay = 1000*3600*24
 

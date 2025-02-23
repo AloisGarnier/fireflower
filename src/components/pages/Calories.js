@@ -11,7 +11,8 @@ import NouvelAlimentExercise from "../units/specific/NouvelAlimentExercise"
 
 export default function Calories(props) {
 
-    const [selectedMonth, setSelectedMonth] = useState([0, new Date().getFullYear()])
+    const [plage, setPlage] = useState(24)
+    const [pas, setPas] = useState('j')
     const [series, setSeries] = useState("")
 
     const backUrl = props.domain + "/calories/"
@@ -22,20 +23,14 @@ export default function Calories(props) {
     const sportUrl = props.domain + "/sport/"
     const foodUrl = props.domain + "/food/"
 
-    useEffect(() => refreshValues(0, new Date().getFullYear()), [])
+    useEffect(() => refreshValues(24, 'j'), [])
     useEffect(() => fetchExercises(), [])
     useEffect(() => fetchAliments(), [])
 
-    function refreshValues(newMonth, newYear) {
-        if(newMonth == 0) {
-            fetch(backUrl + "byYear/" + newYear)
-                .then(response => response.json())
-                .then(json => setSeries(json))
-        } else {
-            fetch(backUrl + "byMonth/" + newMonth + "/" + newYear)
-                .then(response => response.json())
-                .then(json => setSeries(json))
-        }
+    function refreshValues(newPlage, newPas) {
+        fetch(backUrl + "lastMonths/" + newPlage + "/" + newPas)
+            .then(response => response.json())
+            .then(json => setSeries(json))
     }
 
     function fetchExercises() {
@@ -55,43 +50,35 @@ export default function Calories(props) {
         var spent = []
         for(var i=0; i<series.length; i++) {
             if(series[i].ingestedCalories > 0) {
-                ingested.push([series[i].date, cst.metabolisme - series[i].ingestedCalories])
+                ingested.push([series[i].date, cst.metabolisme*series[i].numberOfDays - series[i].ingestedCalories])
                 spent.push([series[i].date, series[i].spentCalories])
             } 
         }
         return([ingested, spent])
     }
 
-    function changeMonth(newMonth, newYear) {
-        setSelectedMonth([newMonth, newYear])
-        refreshValues(newMonth, newYear)
-    }
-
-    const onMonthChange = (
+    const onPlageChange = (
         inputValue
       ) => {
-        changeMonth(inputValue.value, selectedMonth[1])
+        setPlage(inputValue.value)
+        refreshValues(inputValue.value, pas)
       }
 
-    const onYearChange = (
+    const onPasChange = (
         inputValue
       ) => {
-        changeMonth(selectedMonth[0], inputValue.value)
+        setPas(inputValue.value)
+        refreshValues(plage, inputValue.value)
       }
 
     function displayTopButtons() {
-        var annees = []
-        for(var a = 2001 ; a <= 2100 ; a++) {
-            annees.push({ value: a, label: a+'' })
-        }
-
-        var defaultMonth = cst.moisTouteAnnee[selectedMonth[0]]
-        var defaultYear = annees[selectedMonth[1] - 2001]
+        var defaultPlage = cst.plageDeTemps[0]
+        var defaultPas = cst.pasDeTemps[0]
 
         return(
             <div class="btn-group mb-5" role="group">
-                <Select options={cst.moisTouteAnnee} defaultValue={defaultMonth} onChange={onMonthChange}/>
-                <Select options={annees} defaultValue={defaultYear} onChange={onYearChange}/>
+                <Select options={cst.plageDeTemps} defaultValue={defaultPlage} onChange={onPlageChange}/>
+                <Select options={cst.pasDeTemps} defaultValue={defaultPas} onChange={onPasChange}/>
             </div>
         )
     }

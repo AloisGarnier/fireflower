@@ -36,6 +36,18 @@ export default function StackedAreaChart(props) {
             title: {
                 text: props.titre
             },
+            tooltip: {
+                dateTimeLabelFormats: {
+                  millisecond: "%A, %b %e, %H:%M:%S.%L",
+                  second: "%A, %b %e, %H:%M:%S",
+                  minute: "%A, %b %e, %H:%M",
+                  hour: "%A, %b %e, %H:%M",
+                  day: "%e %B %Y",
+                  week: "Semaine du %e %B %Y",
+                  month: "%B %Y",
+                  year: "%Y"
+                }
+            },
             xAxis: {
                 title: {
                     text: props.titreX
