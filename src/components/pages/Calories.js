@@ -122,7 +122,7 @@ export default function Calories(props) {
     }
 
     return(
-        <div class="d-flex sm-col-lg-row">
+        <>
             <div class="d-flex flex-column align-self-center align-items-center justify-items-center mx-5">
                 {displayTopButtons()}
                 <StackedAreaChart
@@ -134,31 +134,33 @@ export default function Calories(props) {
                 />
                 {displayBottomInfo()}
             </div>
-            <div class="d-flex flex-column align-self-center align-items-center justify-items-center mx-5">
-                <label class="my-notes">Liste des exercices :</label>
-                <TableRecap 
-                    titreColonnes={["Nom", "Calories dépensées par unité", "Unité"]}
-                    donnees={sportTable()}
-                />
-                <label class="my-notes">Ajouter un nouvel exercice :</label>
-                <NouvelAlimentExercise 
-                    domain={props.domain}
-                    item="exercise"
-                />
+            <div class="sm-none-lg-row">
+                <div class="d-flex flex-column align-self-center align-items-center justify-items-center mx-5">
+                    <label class="my-notes">Liste des exercices :</label>
+                    <TableRecap 
+                        titreColonnes={["Nom", "Calories dépensées par unité", "Unité"]}
+                        donnees={sportTable()}
+                    />
+                    <label class="my-notes">Ajouter un nouvel exercice :</label>
+                    <NouvelAlimentExercise 
+                        domain={props.domain}
+                        item="exercise"
+                    />
+                </div>
+                <div class="d-flex flex-column align-self-center align-items-center justify-items-center mx-5">
+                    <label class="my-notes">Liste des aliments :</label>
+                    <TableRecap 
+                        titreColonnes={["Nom", "Calories absorbées par unité", "Unité"]}
+                        donnees={foodTable()}
+                    />
+                    <label class="my-notes">Ajouter un nouvel aliment :</label>
+                    <NouvelAlimentExercise 
+                        domain={props.domain}
+                        item="aliment"
+                    />
+                </div>
             </div>
-            <div class="d-flex flex-column align-self-center align-items-center justify-items-center mx-5">
-                <label class="my-notes">Liste des aliments :</label>
-                <TableRecap 
-                    titreColonnes={["Nom", "Calories absorbées par unité", "Unité"]}
-                    donnees={foodTable()}
-                />
-                <label class="my-notes">Ajouter un nouvel aliment :</label>
-                <NouvelAlimentExercise 
-                    domain={props.domain}
-                    item="aliment"
-                />
-            </div>
-        </div>
+        </>
     )
 }
 

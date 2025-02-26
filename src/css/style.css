@@ -85,15 +85,19 @@ ul, li {
 	margin-bottom: 0 !important;
 }
 
+.test {
+	height: 50% !important;
+}
+
 @media only screen and (max-width: 480px) {
-	.sm-col-lg-row {
-		flex-direction: column !important;
-		max-width: 90% !important;
+	.sm-none-lg-row {
+		display: none !important;
 	}
   }
   
   @media only screen and (min-width: 480px) {
-	.sm-col-lg-row {
+	.sm-none-lg-row {
+		display: flex !important;
 		flex-direction: row !important;
 	}
   }

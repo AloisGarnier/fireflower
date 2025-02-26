@@ -61,8 +61,15 @@ export default function StackedAreaChart(props) {
             },
             series: updatedSeries
         }
+
+        function maxWidth() {
+            if(window.innerWidth >= 600) {
+                return "600px"
+            }
+            return "300px"
+        }
     
         return(
-            <HighchartsReact highcharts={Highcharts} options={options} />
+            <HighchartsReact containerProps={{ style: { width: maxWidth() } }} highcharts={Highcharts} options={options} />
         )
 }
