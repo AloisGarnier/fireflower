@@ -70,6 +70,10 @@ export default function StackedAreaChart(props) {
         }
     
         return(
-            <HighchartsReact containerProps={{ style: { width: maxWidth() } }} highcharts={Highcharts} options={options} />
+            <HighchartsReact 
+                containerProps={{ style: { width: maxWidth() } }} 
+                highcharts={Highcharts} 
+                options={options} 
+            />
         )
 }

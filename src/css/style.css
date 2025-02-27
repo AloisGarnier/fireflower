@@ -93,12 +93,20 @@ ul, li {
 	.sm-none-lg-row {
 		display: none !important;
 	}
+
+	.my-margin {
+		margin: 3rem 0 !important;
+	}
   }
   
   @media only screen and (min-width: 480px) {
 	.sm-none-lg-row {
 		display: flex !important;
 		flex-direction: row !important;
+	}
+
+	.my-margin {
+		margin: 0 3rem !important;
 	}
   }
 

@@ -123,7 +123,7 @@ export default function Calories(props) {
 
     return(
         <>
-            <div class="d-flex flex-column align-self-center align-items-center justify-items-center mx-5">
+            <div class="d-flex flex-column align-self-center align-items-center justify-items-center my-margin">
                 {displayTopButtons()}
                 <StackedAreaChart
                     titre="Calories dépensées ou sauvées"
