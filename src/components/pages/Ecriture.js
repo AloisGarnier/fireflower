@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react"
-import LineChart from "../units/general units/LineChart"
+import LineChart from "../units/generalUnits/LineChart"
 import Select from 'react-select'
 
 import * as cst from "../constants"
 
-import TableRecap from "../units/general units/TableRecap"
+import TableRecap from "../units/generalUnits/TableRecap"
 import NouveauLivre from "../units/specific/NouveauLivre"
 
 export default function Ecriture(props) {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import AloneInput from "../general units/AloneInput"
+import AloneInput from "../generalUnits/AloneInput"
 
 import * as cst from "../../constants"
 

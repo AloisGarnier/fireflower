@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import AdaptableInputs from "../general units/AdaptableInputs"
+import AdaptableInputs from "../generalUnits/AdaptableInputs"
 
 import * as cst from "../../constants"
 

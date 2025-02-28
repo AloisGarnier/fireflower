@@ -2,6 +2,8 @@ import React from "react"
 import Highcharts from "highcharts"
 import HighchartsReact  from "highcharts-react-official"
 
+import * as cst from "../../constants"
+
 /*
  * Props :
  *  - titre 
@@ -62,16 +64,9 @@ export default function StackedAreaChart(props) {
             series: updatedSeries
         }
 
-        function maxWidth() {
-            if(window.innerWidth >= 600) {
-                return "600px"
-            }
-            return "300px"
-        }
-    
         return(
             <HighchartsReact 
-                containerProps={{ style: { width: maxWidth() } }} 
+                containerProps={cst.containerProps()} 
                 highcharts={Highcharts} 
                 options={options} 
             />

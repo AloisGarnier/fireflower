@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react"
 import Select from 'react-select'
 
-import StackedAreaChart from "../units/general units/StackedAreaChart"
+import StackedAreaChart from "../units/generalUnits/StackedAreaChart"
 
 import * as cst from "../constants"
 
-import TableRecap from "../units/general units/TableRecap"
+import TableRecap from "../units/generalUnits/TableRecap"
 import NouvelAlimentExercise from "../units/specific/NouvelAlimentExercise"
 
 

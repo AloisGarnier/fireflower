@@ -140,3 +140,12 @@ export function decimalRound(num, digits) {
 
     return Math.round((num + Number.EPSILON) * hundredPower) / hundredPower
 }
+
+//Options d'affichage des graphiques
+export function containerProps() {
+    if(window.innerWidth >= 600) {
+        return({ style: { height: "400px", width: "600px"} })
+    }
+    return({ style: { height: "200px", width: "300px" } })
+
+}

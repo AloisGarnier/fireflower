@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import LineChart from "../units/general units/LineChart"
+import LineChart from "../units/generalUnits/LineChart"
 import Select from 'react-select'
 
 import * as cst from "../constants"
@@ -9,6 +9,9 @@ export default function Poids(props) {
     const [plage, setPlage] = useState(24)
     const [pas, setPas] = useState('j')
     const [series, setSeries] = useState("")
+
+    const [isSurpoids, setSurpoids] = useState(false)
+    const [isNormal, setNormal] = useState(false)
 
     const backUrl = props.domain + "/weight/"
 
@@ -20,12 +23,36 @@ export default function Poids(props) {
         .then(json => setSeries(json))
     }
 
-    function populateSeriesY() {
-        var tempY = []
-        for(var i=0; i<series.length; i++) {
-            tempY.push([series[i].date, series[i].weight])
+    function addFlatSeries(bool, value, table) {
+        if(bool) {
+            var newSeries = []
+            newSeries.push([series[0].date, value])
+            newSeries.push([series[series.length - 1].date, value])
+            table.push(newSeries)
         }
-        return(tempY)
+    }
+
+    function populateSeriesY() {
+        var allSeries = []
+        var poidsSeries = []
+        for(var i=0; i<series.length; i++) {
+            poidsSeries.push([series[i].date, series[i].weight])
+        }
+        allSeries.push(poidsSeries)
+        addFlatSeries(isNormal, cst.normal, allSeries)
+        addFlatSeries(isSurpoids, cst.surpoids, allSeries)
+        return(allSeries)
+    }
+
+    function titreSeries() {
+        var allTitres = ["Mon poids"]
+        if(isNormal) {
+            allTitres.push("Poids normal")
+        }
+        if(isSurpoids) {
+            allTitres.push("Surpoids")
+        }
+        return allTitres
     }
 
     const onPlageChange = (
@@ -50,6 +77,53 @@ export default function Poids(props) {
             <div class="btn-group mb-5" role="group">
                 <Select options={cst.plageDeTemps} defaultValue={defaultPlage} onChange={onPlageChange}/>
                 <Select options={cst.pasDeTemps} defaultValue={defaultPas} onChange={onPasChange}/>
+            </div>
+        )
+    }
+
+    function buttonClass(opt) {
+        if(opt == "normal") {
+            if(isNormal) {
+                return "btn btn-secondary"
+            }
+            return "btn btn-dark"
+        }
+        if(opt == "surpoids") {
+            if(isSurpoids) {
+                return "btn btn-secondary"
+            }
+            return "btn btn-dark"
+        }
+    }
+
+    function buttonClick(opt) {
+        if(opt == "normal") {
+            setNormal(b => !b)
+        } else if(opt == "surpoids") {
+            setSurpoids(b => !b)
+        }
+    }
+
+    function buttonLabel(opt) {
+        if(opt == "normal") {
+            if(isNormal) {
+                return "Masquer la courbe du poids normal"
+            }
+            return "Afficher la courbe du poids normal"
+        }
+        if(opt == "surpoids") {
+            if(isSurpoids) {
+                return "Masquer la courbe du surpoids"
+            }
+            return "Afficher la courbe du surpoids"
+        }
+    }
+
+    function displayBottomButtons() {
+        return(
+            <div class="btn-group mt-5">
+                <button type="button" class={buttonClass("normal")} onClick={() => buttonClick("normal")}>{buttonLabel("normal")}</button>
+                <button type="button" class={buttonClass("surpoids")} onClick={() => buttonClick("surpoids")}>{buttonLabel("surpoids")}</button>
             </div>
         )
     }
@@ -93,12 +167,13 @@ export default function Poids(props) {
         <div class="d-flex flex-column w-50 align-self-center align-items-center justify-items-center">
             {displayTopButtons()}
             <LineChart
-                titre="Evolution du poids"
+                titre="Suivi de mon poids dans le temps"
                 titreX="Date"
                 titreY="Poids (kg)"
-                titreSeries={["Poids"]}
-                donneeSeries={[populateSeriesY()]}
+                titreSeries={titreSeries()}
+                donneeSeries={populateSeriesY()}
             />
+            {displayBottomButtons()}
             {displayBottomInfo()}
         </div>
     )
