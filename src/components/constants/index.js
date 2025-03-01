@@ -126,8 +126,8 @@ export function paramDMY(props) {
 }
 
 //Poids
-export const surpoids = 85
-export const normal = 71
+export const surpoids = 30 * (1,7**2)
+export const normal = 25 * (1,7**2)
 export const metabolisme = 2200
 export const calPerKg = 7700
 
@@ -146,6 +146,6 @@ export function containerProps() {
     if(window.innerWidth >= 600) {
         return({ style: { height: "400px", width: "600px"} })
     }
-    return({ style: { height: "200px", width: "300px" } })
+    return({ style: { height: "400px", width: "300px" } })
 
 }
