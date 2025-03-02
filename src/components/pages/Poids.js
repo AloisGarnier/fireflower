@@ -36,7 +36,7 @@ export default function Poids(props) {
         var allSeries = []
         var poidsSeries = []
         for(var i=0; i<series.length; i++) {
-            poidsSeries.push([series[i].date, series[i].weight])
+            poidsSeries.push([series[i].date, cst.decimalRound(series[i].weight, 1)])
         }
         allSeries.push(poidsSeries)
         addFlatSeries(isNormal, cst.normal, allSeries)

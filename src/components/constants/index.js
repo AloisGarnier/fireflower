@@ -126,8 +126,8 @@ export function paramDMY(props) {
 }
 
 //Poids
-export const surpoids = 30 * (1.7**2)
-export const normal = 25 * (1.7**2)
+export const surpoids = decimalRound(30 * (1.7**2), 1)
+export const normal = decimalRound(25 * (1.7**2), 1)
 export const metabolisme = 2200
 export const calPerKg = 7700
 
