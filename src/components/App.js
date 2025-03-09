@@ -23,6 +23,10 @@ export default function App() {
         
         <div class="my-main-content">
           <Routes>
+            <Route exact path="/" element={
+              <Calendrier
+              domain={domain}
+            />}></Route>
             <Route exact path="/calendrier" element={
               <Calendrier
               domain={domain}

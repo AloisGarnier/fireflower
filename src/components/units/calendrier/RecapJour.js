@@ -135,6 +135,26 @@ export default function RecapJour(props) {
         )
     }
 
+    function colorSpent() {
+        return recap.spent > 1 ? cst.VERT : cst.ROUGE
+    }
+
+    function colorIngested() {
+        if(recap.ingested > cst.METABOLISME*1.2) {
+            return cst.ROUGE
+        }
+        if(recap.ingested > cst.METABOLISME*1.1) {
+            return cst.ROUGE_ORANGE
+        }
+        if(recap.ingested > cst.METABOLISME*0.9) {
+            return cst.ORANGE
+        }
+        if(recap.ingested > cst.METABOLISME*0.8) {
+            return cst.VERT_FONCE
+        }
+        return cst.VERT
+    }
+
     return(
         <Accordion>
             <Accordion.Item eventKey="0">
@@ -155,7 +175,7 @@ export default function RecapJour(props) {
             </Accordion.Item >
             <Accordion.Item eventKey="2">
                 <Accordion.Header>
-                    <strong>Sport : &nbsp;</strong> {recap.spent} kcal
+                    <strong>Sport : &nbsp;</strong> <span style={{color: colorSpent()}}>{recap.spent} kcal</span>
                 </Accordion.Header>
                 <Accordion.Body>
                     {displaySport()}
@@ -163,7 +183,7 @@ export default function RecapJour(props) {
             </Accordion.Item>
             <Accordion.Item eventKey="3">
                 <Accordion.Header>
-                    <strong>Repas : &nbsp;</strong> {recap.ingested} kcal
+                    <strong>Repas : &nbsp;</strong> <span style={{color: colorIngested()}}>{recap.ingested} kcal</span>
                 </Accordion.Header>
                 <Accordion.Body>
                     {displayMeals()}

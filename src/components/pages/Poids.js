@@ -39,8 +39,8 @@ export default function Poids(props) {
             poidsSeries.push([series[i].date, cst.decimalRound(series[i].weight, 1)])
         }
         allSeries.push(poidsSeries)
-        addFlatSeries(isNormal, cst.normal, allSeries)
-        addFlatSeries(isSurpoids, cst.surpoids, allSeries)
+        addFlatSeries(isNormal, cst.NORMAL, allSeries)
+        addFlatSeries(isSurpoids, cst.SURPOIDS, allSeries)
         return(allSeries)
     }
 
@@ -81,21 +81,6 @@ export default function Poids(props) {
         )
     }
 
-    function buttonClass(opt) {
-        if(opt == "normal") {
-            if(isNormal) {
-                return "btn btn-secondary"
-            }
-            return "btn btn-dark"
-        }
-        if(opt == "surpoids") {
-            if(isSurpoids) {
-                return "btn btn-secondary"
-            }
-            return "btn btn-dark"
-        }
-    }
-
     function buttonClick(opt) {
         if(opt == "normal") {
             setNormal(b => !b)
@@ -104,26 +89,17 @@ export default function Poids(props) {
         }
     }
 
-    function buttonLabel(opt) {
-        if(opt == "normal") {
-            if(isNormal) {
-                return "Masquer la courbe du poids normal"
-            }
-            return "Afficher la courbe du poids normal"
-        }
-        if(opt == "surpoids") {
-            if(isSurpoids) {
-                return "Masquer la courbe du surpoids"
-            }
-            return "Afficher la courbe du surpoids"
-        }
-    }
-
     function displayBottomButtons() {
         return(
             <div class="btn-group mt-5">
-                <button type="button" class={buttonClass("normal")} onClick={() => buttonClick("normal")}>{buttonLabel("normal")}</button>
-                <button type="button" class={buttonClass("surpoids")} onClick={() => buttonClick("surpoids")}>{buttonLabel("surpoids")}</button>
+                <div class="form-check mx-2">
+                    <input class="form-check-input" type="checkbox" onClick={() => buttonClick("normal")} id="flexCheckDefault"/>
+                    <label class="form-check-label white-text" for="flexCheckDefault">Poids normal</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" onClick={() => buttonClick("surpoids")} id="flexCheckDefault"/>
+                    <label class="form-check-label white-text" for="flexCheckDefault">Surpoids</label>
+                </div>
             </div>
         )
     }
@@ -133,8 +109,8 @@ export default function Poids(props) {
             var diff = cst.decimalRound(series[series.length-1].weight - series[0].weight, 1)
             var diffTemps = (new Date(series[series.length-1].date) - new Date(series[0].date))/(1000*3600*24)
             var diffParJour = cst.decimalRound(diff/diffTemps, 1)
-            var restePourSurpoids = cst.decimalRound((series[series.length-1].weight - cst.surpoids)/diffParJour, 0)
-            var restePourPoidsNormal = cst.decimalRound((series[series.length-1].weight - cst.normal)/diffParJour, 0)
+            var restePourSurpoids = cst.decimalRound((series[series.length-1].weight - cst.SURPOIDS)/diffParJour, 0)
+            var restePourPoidsNormal = cst.decimalRound((series[series.length-1].weight - cst.NORMAL)/diffParJour, 0)
 
             var firstSentence = ""
             if(diff < 0) {

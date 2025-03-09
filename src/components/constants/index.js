@@ -2,6 +2,17 @@ import React from "react"
 
 // Options du menu principal
 export const menuOptions = [
+    {chemin : "/", icone : "fa fa-house", nom : "Accueil"},
+    {chemin : "/calendrier", icone : "fa fa-calendar-days", nom : "Quotidien"},
+    {chemin : "/poids", icone : "fa fa-weight-scale", nom : "Poids"},
+    {chemin : "/calories", icone : "fa fa-apple-whole", nom : "Calories"},
+    {chemin : "/todolist", icone : "fa fa-list-check", nom : "À faire"},
+    {chemin : "/ecriture", icone : "fa fa-feather", nom : "Ecriture"},
+    {chemin : "/jdr", icone : "fa fa-dice-d20", nom : "Jeux de rôle"},
+]
+
+// Options du menu principal responsive
+export const menuOptionsPetit = [
     // 2e option
     {chemin : "/poids", icone : "fa fa-weight-scale"},
     // 1re option
@@ -25,8 +36,8 @@ export const menuOptions = [
 ]
 
 // Gestion des dates
-export const mois31 = [1, 3, 5, 7, 8, 10, 12]
-export const mois30 = [4, 6, 9, 11]
+export const MOIS_31 = [1, 3, 5, 7, 8, 10, 12]
+export const MOIS_30 = [4, 6, 9, 11]
 
 export const mois = [
     { value: 1, label: 'Janvier' },
@@ -74,7 +85,7 @@ export const pasDeTemps = [
 ]
 
 //Gestion du temps
-export const milliSecondsInDay = 1000*3600*24
+export const MILLISECONDS_IN_DAY = 1000*3600*24
 
 export function first(number) {
     if(number == 1) {
@@ -87,7 +98,7 @@ export function displayDate(date) {
     return(<>{first(date.getDate())} {mois[date.getMonth()].label.toLowerCase()} {date.getFullYear()}</>)
 }
 
-export const fetesFixes = [101, 105, 111, 805, 1111, 1407, 1508, 2512]
+export const FETES_FIXES = [101, 105, 111, 805, 1111, 1407, 1508, 2512]
 
 // Changer un élément d'un tableau dans un useState
 export function updateValue(setStateFunction, index, newValue) {
@@ -126,13 +137,13 @@ export function paramDMY(props) {
 }
 
 //Poids
-export const surpoids = decimalRound(30 * (1.7**2), 1)
-export const normal = decimalRound(25 * (1.7**2), 1)
-export const metabolisme = 2200
-export const calPerKg = 7700
+export const SURPOIDS = decimalRound(30 * (1.7**2), 1)
+export const NORMAL = decimalRound(25 * (1.7**2), 1)
+export const METABOLISME = 2200
+export const CALORIES_PAR_KG = 7700
 
 //NaNoWriMo
-export const nanowrimo = 50000
+export const NANOWRIMO = 50000
 
 //Arrondi
 export function decimalRound(num, digits) {
@@ -149,3 +160,10 @@ export function containerProps() {
     return({ style: { height: "400px", width: "300px" } })
 
 }
+
+//Couleurs
+export const VERT_FONCE = "#006B3D"
+export const VERT = "#069C56"
+export const ORANGE = "#FF980E"
+export const ROUGE_ORANGE = "#FF681E"
+export const ROUGE = "#D3212C"

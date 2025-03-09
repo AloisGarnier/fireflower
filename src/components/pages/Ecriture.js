@@ -110,9 +110,9 @@ export default function Ecriture(props) {
     function displayBottomInfo() {
         if(series[0] && series[1]) {
             var diff = series[series.length-1].words - series[0].words
-            var diffTemps = (new Date(series[series.length-1].date) - new Date(series[0].date))/cst.milliSecondsInDay
+            var diffTemps = (new Date(series[series.length-1].date) - new Date(series[0].date))/cst.MILLISECONDS_IN_DAY
             var diffParJour = cst.decimalRound(diff/diffTemps, 2)
-            var restePourNanoWriMo = cst.decimalRound((cst.nanowrimo - series[series.length-1].words)/diffParJour, 0)
+            var restePourNanoWriMo = cst.decimalRound((cst.NANOWRIMO - series[series.length-1].words)/diffParJour, 0)
     
             return(
                 <div class="my-5 my-notes">

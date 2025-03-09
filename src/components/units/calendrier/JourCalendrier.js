@@ -49,7 +49,7 @@ export default function JourCalendrier(props) {
     function jourFerie() {
         // Fêtes fixes
         var valeurJourActuel = props.jour*100 + props.mois + 1
-        if(cst.fetesFixes.includes(valeurJourActuel)) {
+        if(cst.FETES_FIXES.includes(valeurJourActuel)) {
             return true
         }
         // Pâques, Ascension, Pentecôte

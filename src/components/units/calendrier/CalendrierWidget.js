@@ -18,9 +18,9 @@ export default function CalendrierWidget(props) {
     }
 
     function daysOfMonth() {
-        if(cst.mois31.includes(selectedMonth[0])) {
+        if(cst.MOIS_31.includes(selectedMonth[0])) {
             return 31
-        } else if(cst.mois30.includes(selectedMonth[0])) {
+        } else if(cst.MOIS_30.includes(selectedMonth[0])) {
             return 30
         } else {
             var feb29 = new Date(selectedMonth[1], 1, 29).getDate() == 29 ? 1 : 0

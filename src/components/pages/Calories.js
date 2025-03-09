@@ -50,7 +50,7 @@ export default function Calories(props) {
         var spent = []
         for(var i=0; i<series.length; i++) {
             if(series[i].ingestedCalories > 0) {
-                ingested.push([series[i].date, cst.metabolisme*series[i].numberOfDays - series[i].ingestedCalories])
+                ingested.push([series[i].date, cst.METABOLISME*series[i].numberOfDays - series[i].ingestedCalories])
                 spent.push([series[i].date, series[i].spentCalories])
             } 
         }
@@ -91,10 +91,10 @@ export default function Calories(props) {
             for(var i=0; i<ingested.length;i++) {
                 total += ingested[i][1] + spent[i][1]
             }
-            var diffTemps = (new Date(ingested[lastIndex][0]) - new Date(ingested[0][0]))/cst.milliSecondsInDay + 1
+            var diffTemps = (new Date(ingested[lastIndex][0]) - new Date(ingested[0][0]))/cst.MILLISECONDS_IN_DAY + 1
             var moyenne = cst.decimalRound(total/diffTemps, 0)
-            var totalKg = cst.decimalRound(total/cst.calPerKg, 2)
-            var moyenneKg = cst.decimalRound(moyenne/cst.calPerKg, 2)
+            var totalKg = cst.decimalRound(total/cst.CALORIES_PAR_KG, 2)
+            var moyenneKg = cst.decimalRound(moyenne/cst.CALORIES_PAR_KG, 2)
             
             return(
                 <div class="my-5 my-notes">
