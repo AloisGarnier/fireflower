@@ -15,8 +15,8 @@ import Todolist from "./pages/Todolist.js";
 
 export default function App() {
 
-  const domain = "http://localhost:8081"
-  //const domain = "http://34.155.93.110:8081"
+  //const domain = "http://localhost:8081"
+  const domain = "http://34.155.93.110:8081"
 
   return( 
       <div class="my-app">
