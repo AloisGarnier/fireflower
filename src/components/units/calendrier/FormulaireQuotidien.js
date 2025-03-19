@@ -31,9 +31,9 @@ export default function FormulaireQuotidien(props) {
 
     return(
         <div class="d-flex flex-column align-self-start width-form">
-            <h3 class="card-header my-header my-2 align-self-center">
-                <label for="floatingInput" class="white-text">{cst.displayDate(props.selectedDay)}</label>
-            </h3>
+            <h2 class="card-header my-header my-2 align-self-center">
+                <label for="floatingInput" class="white-text m-3">{cst.displayDate(props.selectedDay)}</label>
+            </h2>
             <div class="card-body d-flex flex-column">
                 <EcritureInput 
                     domain ={props.domain}

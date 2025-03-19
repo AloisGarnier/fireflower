@@ -2,13 +2,13 @@ import React from "react"
 
 // Options du menu principal
 export const menuOptions = [
-    {chemin : "/", icone : "fa fa-house", nom : "Accueil"},
     {chemin : "/calendrier", icone : "fa fa-calendar-days", nom : "Quotidien"},
     {chemin : "/poids", icone : "fa fa-weight-scale", nom : "Poids"},
     {chemin : "/calories", icone : "fa fa-apple-whole", nom : "Calories"},
     {chemin : "/todolist", icone : "fa fa-list-check", nom : "À faire"},
-    {chemin : "/ecriture", icone : "fa fa-feather", nom : "Ecriture"},
-    {chemin : "/jdr", icone : "fa fa-dice-d20", nom : "Jeux de rôle"},
+    {chemin : "/ecriture", icone : "fa fa-feather", nom : "Écriture"},
+    {chemin : "/langues", icone : "fa fa-language", nom : "Langues"},
+    {chemin : "/jdr", icone : "fa fa-dice-d20", nom : "Jeu de rôle"},
 ]
 
 // Options du menu principal responsive
@@ -26,9 +26,9 @@ export const menuOptionsPetit = [
     // 7e option
     {chemin : "/jeux", icone : "fa fa-gamepad"}, 
     // 6e option
-    {chemin : "/echecs", icone : "fa fa-chess"}, 
+    {chemin : "/langues", icone : "fa fa-language"}, 
     // 5e option
-    {chemin : "/finances", icone : "fa fa-money-bill-trend-up"},
+    {chemin : "/todolist", icone : "fa fa-list-check"},
     // 4e option
     {chemin : "/ecriture", icone : "fa fa-feather"},
     // 3e option
@@ -93,9 +93,36 @@ export function first(number) {
     }
     return(<>{number}</>)
 }
+
+export const dayOfWeek = [
+    "Dimanche",
+    "Lundi",
+    "Mardi",
+    "Mercredi",
+    "Jeudi",
+    "Vendredi",
+    "Samedi"
+]
   
 export function displayDate(date) {
-    return(<>{first(date.getDate())} {mois[date.getMonth()].label.toLowerCase()} {date.getFullYear()}</>)
+    return(<>{dayOfWeek[date.getDay()]} {first(date.getDate())} {mois[date.getMonth()].label.toLowerCase()} {date.getFullYear()}</>)
+}
+
+export function displayDateWithYesterdayTomorrow(dateString) {
+    let date = new Date(dateString.substring(0,4), dateString.substring(5,7)-1, dateString.substring(8,10))
+    date.setHours(0, 0, 0, 0)
+    let today = new Date()
+    today.setHours(0, 0, 0, 0)
+    if(date-today == 0) {
+        return(<>Aujourd'hui</>)
+    }
+    if(date - today == MILLISECONDS_IN_DAY) {
+        return(<>Demain</>)
+    }
+    if(date - today == -MILLISECONDS_IN_DAY) {
+        return(<>Hier</>)
+    }
+    return(displayDate(date))
 }
 
 export const FETES_FIXES = [101, 105, 111, 805, 1111, 1407, 1508, 2512]
@@ -132,6 +159,14 @@ export function paramDMY(props) {
     var d = props.selectedDay.getDate()
     var m = props.selectedDay.getMonth() + 1
     var y = props.selectedDay.getFullYear()
+    var param =  d + "/" + m + "/" + y
+    return param
+}
+
+export function paramDMYDate(aDate) {
+    var d = aDate.getDate()
+    var m = aDate.getMonth() + 1
+    var y = aDate.getFullYear()
     var param =  d + "/" + m + "/" + y
     return param
 }

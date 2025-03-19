@@ -11,11 +11,12 @@ import Calendrier from "./pages/Calendrier.js"
 import Poids from "./pages/Poids.js"
 import Ecriture from "./pages/Ecriture.js";
 import Calories from "./pages/Calories.js";
+import Todolist from "./pages/Todolist.js";
 
 export default function App() {
 
-  //const domain = "http://localhost:8081"
-  const domain = "http://34.155.93.110:8081"
+  const domain = "http://localhost:8081"
+  //const domain = "http://34.155.93.110:8081"
 
   return( 
       <div class="my-app">
@@ -41,6 +42,10 @@ export default function App() {
             />}></Route>
             <Route exact path="/calories" element={
               <Calories
+              domain={domain}
+            />}></Route>
+            <Route exact path="/todolist" element={
+              <Todolist
               domain={domain}
             />}></Route>
           </Routes>

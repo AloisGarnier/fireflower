@@ -110,6 +110,49 @@ ul, li {
 	}
   }
 
+  .my-toast {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+  }
+
+  .transparent-button {
+    border: transparent !important;
+    background-color: transparent !important;
+  }
+
+  .hover-green:hover {
+    color: green !important;
+  }
+
+  .hover-red:hover {
+    color: red !important;
+  }
+
+  .hover-orange:hover {
+    color: orange !important;
+  }
+
+  .green {
+    color: green !important;
+  }
+
+  .blue {
+    color: blueviolet !important;
+  }
+
+  .red {
+    color: red !important;
+  }
+
+  .orange {
+    color: orange !important;
+  }
+
+  .same-size {
+    min-width: 30%!important;
+  }
+
 /*=========== circular menu =============*/
 
 body {

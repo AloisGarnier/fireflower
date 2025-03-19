@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import CalendrierWidget from "../units/calendrier/CalendrierWidget"
 import FormulaireQuotidien from "../units/calendrier/FormulaireQuotidien";
 import RecapJour from "../units/calendrier/RecapJour";
+import TachesCalendrier from "../units/calendrier/TachesCalendrier";
 
 /*
  * Props :
@@ -30,6 +31,7 @@ export default function Calendrier(props) {
                 domain={props.domain}
                 setHasChanged={setHasChanged}
             />
+            <TachesCalendrier domain={props.domain}/>
         </div> 
     );
 }

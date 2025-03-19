@@ -9,7 +9,7 @@ export default function NouveauLivre(props) {
 
     const [title, setTitle] = useState("")
 
-    let navigate = useNavigate();
+    let navigate = useNavigate()
 
     const backUrl = props.domain + "/writing/"
 
