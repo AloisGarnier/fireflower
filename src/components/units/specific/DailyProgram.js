@@ -99,7 +99,7 @@ export default function DailyProgram(props) {
     return(
         <div class="me-2">
             <TableRecap 
-                titreColonnes={[cst.dayOfWeekSundaySeven[props.day+1], "", program.calories + " kcal"]}
+                titreColonnes={[cst.dayOfWeekSundaySeven[props.day+1], "", (program.calories ?? 0) + " kcal"]}
                 donnees={dailyTable()}
                 headStyle="table-info"
             />

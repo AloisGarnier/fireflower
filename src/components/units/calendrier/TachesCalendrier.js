@@ -54,7 +54,9 @@ export default function TachesCalendrier(props) {
     return(
         <div class="d-flex flex-column align-content-center">
             <h2 class="align-self-center white-text m-5">À faire</h2>
-            {displayTodo()}
+            <div class="my-2">
+                {displayTodo()}
+            </div>
             {displayPlanned()}
         </div>
     )
