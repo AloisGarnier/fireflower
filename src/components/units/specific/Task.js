@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 import * as cst from "../../constants"
 
@@ -7,12 +6,15 @@ import * as cst from "../../constants"
  * Props :
  *  - task
  *  - domain
+ *  - trigger
  */
 export default function Task(props) {
 
-    let navigate = useNavigate()
-
     const backUrl = props.domain + "/todo/"
+
+    function refresh() {
+        setTimeout(function(){props.trigger(bool => !bool)},1000)
+    }
 
     function done() {
         const requestOptions = {
@@ -20,7 +22,7 @@ export default function Task(props) {
             headers: { 'Content-Type': 'application/json' },
         }
         fetch(backUrl + "done/" + props.task.id, requestOptions)
-            .then(setTimeout(function(){navigate(0)},1000))
+            .then(() => refresh())
     }
 
     function undo() {
@@ -29,7 +31,7 @@ export default function Task(props) {
             headers: { 'Content-Type': 'application/json' },
         }
         fetch(backUrl + "undo/" + props.task.id, requestOptions)
-            .then(setTimeout(function(){navigate(0)},1000))
+            .then(() => refresh())
     }
 
     function suppress() {
@@ -38,22 +40,22 @@ export default function Task(props) {
             headers: { 'Content-Type': 'application/json' },
         }
         fetch(backUrl + "delete/" + props.task.id, requestOptions)
-            .then(setTimeout(function(){navigate(0)},1000))
+            .then(() => refresh())
     }
 
     function displayTopButtons() {
         if(props.task.done) {
             return(
                 <>
-                    <button type="button" class="transparent-button hover-orange" onClick={() => undo()}><i class="fa-solid fa-rotate-left"></i></button>
-                    <button type="button" class="transparent-button hover-red" onClick={() => suppress()}><i class="fa-solid fa-xmark"></i></button>
+                    <button type="button" class="transparent-button orange" onClick={() => undo()}><i class="fa-duotone fa-solid fa-arrow-rotate-left"></i></button>
+                    <button type="button" class="transparent-button red" onClick={() => suppress()}><i class="fa-duotone fa-solid fa-trash-can"></i></button>
                 </>
             )
         }
         return(
             <>
-                <button type="button" class="transparent-button hover-green" onClick={() => done()}><i class="fa-solid fa-check"></i></button>
-                <button type="button" class="transparent-button hover-red" onClick={() => suppress()}><i class="fa-solid fa-xmark"></i></button>
+                <button type="button" class="transparent-button green" onClick={() => done()}><i class="fa-duotone fa-solid fa-thumbs-up"></i></button>
+                <button type="button" class="transparent-button red" onClick={() => suppress()}><i class="fa-duotone fa-solid fa-trash-can"></i></button>
             </>
         )
     }
@@ -64,13 +66,24 @@ export default function Task(props) {
         date.setHours(0, 0, 0, 0)
         let today = new Date()
         today.setHours(0, 0, 0, 0)
-        if(date-today == 0) {
-            return(<i class="fa-solid fa-arrow-right green me-2"></i>)
+        if(props.task.type == "SPORT") {
+            return(<i class="fa-duotone fa-solid fa-dumbbell grey me-2"></i>)
         }
-        if(date > today) {
-            return(<i class="fa-solid fa-bookmark blue me-2"></i>)
+        if(props.task.type == "BIRTHDAY") {
+            return(<i class="fa-duotone fa-solid fa-cake-candles yellow"></i>)
         }
-        return(<i class="fa-solid fa-triangle-exclamation red me-2"></i>)
+
+        if(props.task.done) {
+            return(<i class="fa-solid fa-circle-check green me-2"></i>)
+        } else {
+            if(date-today == 0) {
+                return(<i class="fa-solid fa-arrow-right orange me-2"></i>)
+            }
+            if(date > today) {
+                return(<i class="fa-solid fa-bookmark blue me-2"></i>)
+            }
+            return(<i class="fa-solid fa-triangle-exclamation red me-2"></i>)
+        }
     }
 
     return(

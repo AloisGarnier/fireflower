@@ -64,14 +64,14 @@ export default function AdaptableInputs(props) {
             <div class="card-header btn-not-capitalized d-flex justify-content-between">
                 {props.label}
                 <div class="btn-group me-2" role="group">
-                    <button class="badge rounded-pill bg-danger" onClick={() => moinsInput()}>-</button>
-                    <button class="badge rounded-pill bg-success" onClick={() => plusInput()}>+</button>
+                    <button class="transparent-button red" onClick={() => moinsInput()}><i class="fa-duotone fa-solid fa-hexagon-minus norm-icon"></i></button>
+                    <button class="transparent-button green" onClick={() => plusInput()}><i class="fa-duotone fa-solid fa-hexagon-plus norm-icon"></i></button>
                 </div>
             </div>
             <div class="card-body">
                 {lines}
-                <div class="input-group d-flex flex-row justify-content-end w-100 my-2">
-                    <button class="badge rounded-pill bg-info justify-self-end" onClick={() => props.click(inputChoices, inputValues)}>Valider</button>
+                <div class="input-group d-flex flex-row justify-content-end w-100">
+                    <button class="transparent-button blue" onClick={() => props.click(inputChoices, inputValues)}><i class="fa-duotone fa-solid fa-floppy-disk large-icon"></i></button>
                 </div>
             </div>
         </div>

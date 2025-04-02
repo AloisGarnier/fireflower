@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 
-import * as cst from "../../constants"
-import Task from "../generalUnits/Task"
+import Task from "../specific/Task"
 
 /*
  * Props :
@@ -10,8 +9,14 @@ import Task from "../generalUnits/Task"
 export default function TachesCalendrier(props) {
 
     const [todo, setTodo] = useState([])
+    const [planned, setPlanned] = useState([])
+    const [hasChanged, setHasChanged] = useState(false)
 
     useEffect(() => fetchTasks(), [])
+    useEffect(() => fetchPlanned(), [])
+    useEffect(() => fetchTasks(), [hasChanged])
+    useEffect(() => fetchPlanned(), [hasChanged])
+    useEffect(() => props.setHasChanged(bool => !bool), [hasChanged])
     
     const backUrl = props.domain + "/todo/"
 
@@ -20,12 +25,27 @@ export default function TachesCalendrier(props) {
             .then(response => response.json())
             .then(json => setTodo(json))
     }
+    function fetchPlanned() {
+        fetch(backUrl + "planned")
+            .then(response => response.json())
+            .then(json => setPlanned(json))
+    }
 
     function displayTodo() {
-        var plannedDisplay = []
+        var todoDisplay = []
         for(var i=0; i<todo.length; i++) {
+            todoDisplay.push(
+                <Task task={todo[i]} domain={props.domain} trigger={setHasChanged}/>
+            )
+        }
+        return todoDisplay
+    }
+
+    function displayPlanned() {
+        var plannedDisplay = []
+        for(var i=0; i<planned.length; i++) {
             plannedDisplay.push(
-                <Task task={todo[i]} domain={props.domain}/>
+                <Task task={planned[i]} domain={props.domain} trigger={setHasChanged}/>
             )
         }
         return plannedDisplay
@@ -33,8 +53,9 @@ export default function TachesCalendrier(props) {
 
     return(
         <div class="d-flex flex-column align-content-center">
-            <h2 class="align-self-center white-text m-5">À faire aujourd'hui</h2>
+            <h2 class="align-self-center white-text m-5">À faire</h2>
             {displayTodo()}
+            {displayPlanned()}
         </div>
     )
 }

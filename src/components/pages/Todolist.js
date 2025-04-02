@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import Task from "../units/generalUnits/Task"
+import Task from "../units/specific/Task"
 import NouvelleTache from "../units/specific/NouvelleTache"
 
 /*
@@ -11,10 +11,12 @@ export default function Todolist(props) {
     const [planned, setPlanned] = useState([])
     const [todo, setTodo] = useState([])
     const [done, setDone] = useState([])
+    const [hasChanged, setHasChanged] = useState(false)
 
     const backUrl = props.domain + "/todo/"
 
     useEffect(() => fetchTasks(), [])
+    useEffect(() => fetchTasks(), [hasChanged])
 
     function fetchTasks() {
         fetch(backUrl + "planned")
@@ -32,7 +34,7 @@ export default function Todolist(props) {
         var plannedDisplay = []
         for(var i=0; i<planned.length; i++) {
             plannedDisplay.push(
-                <Task task={planned[i]} domain={props.domain}/>
+                <Task task={planned[i]} domain={props.domain} trigger={setHasChanged}/>
             )
         }
         return plannedDisplay
@@ -42,7 +44,7 @@ export default function Todolist(props) {
         var plannedDisplay = []
         for(var i=0; i<todo.length; i++) {
             plannedDisplay.push(
-                <Task task={todo[i]} domain={props.domain}/>
+                <Task task={todo[i]} domain={props.domain} trigger={setHasChanged}/>
             )
         }
         return plannedDisplay
@@ -52,7 +54,7 @@ export default function Todolist(props) {
         var plannedDisplay = []
         for(var i=0; i<done.length; i++) {
             plannedDisplay.push(
-                <Task task={done[i]} domain={props.domain}/>
+                <Task task={done[i]} domain={props.domain} trigger={setHasChanged}/>
             )
         }
         return plannedDisplay
@@ -75,7 +77,7 @@ export default function Todolist(props) {
                 </div>
             </div>
             <div class="m-5" >
-                <NouvelleTache domain={props.domain}/>
+                <NouvelleTache domain={props.domain} trigger={setHasChanged}/>
             </div>
         </div>
 

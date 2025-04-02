@@ -4,13 +4,15 @@ import React from "react";
  * Props :
  *  - titreColonnes
  *  - donnees (tableau de tableau = [[...], [...], [...], ...])
+ *  - headStyle
  */
 export default function TableRecap(props) {
 
     function populateHead() {
         var heads = []
+        var style = props.headStyle ?? "table-primary"
         for(var i=0; i<props.titreColonnes.length; i++) {
-            heads.push(<th scope="col">{props.titreColonnes[i]}</th>)
+            heads.push(<th scope="col" class={style}>{props.titreColonnes[i]}</th>)
         }
         return heads
     }
@@ -28,7 +30,6 @@ export default function TableRecap(props) {
     }
 
     return(
-    <div class="mh-500 overflow-scroll">
         <table class="table table-hover my-3">
             <thead>
                 <tr>
@@ -38,6 +39,5 @@ export default function TableRecap(props) {
             <tbody>
                 {populateBody()}
             </tbody>
-        </table>
-    </div>)
+        </table>)
 }

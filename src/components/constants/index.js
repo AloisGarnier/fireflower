@@ -2,21 +2,19 @@ import React from "react"
 
 // Options du menu principal
 export const menuOptions = [
-    {chemin : "/calendrier", icone : "fa fa-calendar-days", nom : "Quotidien"},
-    {chemin : "/poids", icone : "fa fa-weight-scale", nom : "Poids"},
-    {chemin : "/calories", icone : "fa fa-apple-whole", nom : "Calories"},
-    {chemin : "/todolist", icone : "fa fa-list-check", nom : "À faire"},
-    {chemin : "/ecriture", icone : "fa fa-feather", nom : "Écriture"},
-    {chemin : "/langues", icone : "fa fa-language", nom : "Langues"},
-    {chemin : "/jdr", icone : "fa fa-dice-d20", nom : "Jeu de rôle"},
+    {chemin : "/calendrier", icone : "fa-duotone fa-solid fa-calendar-days", nom : "Quotidien"},
+    {chemin : "/stats", icone : "fa-duotone fa-solid fa-chart-user", nom : "Statistiques"},
+    {chemin : "/todolist", icone : "fa-duotone fa-solid fa-clipboard-list-check", nom : "À faire"},
+    {chemin : "/langues", icone : "fa-duotone fa-solid fa-language", nom : "Langues"},
+    {chemin : "/options", icone : "fa-duotone fa-solid fa-gears", nom : "Options"},
 ]
 
 // Options du menu principal responsive
 export const menuOptionsPetit = [
     // 2e option
-    {chemin : "/poids", icone : "fa fa-weight-scale"},
+    {chemin : "/poids", icone : "fa-duotone fa-solid fa-weight-scale"},
     // 1re option
-    {chemin : "/calendrier", icone : "fa fa-calendar-days"},
+    {chemin : "/calendrier", icone : "fa-duotone fa-solid fa-calendar-days"},
     // N'apparait pas 
     {chemin : "/utilisateurs", icone : "fa fa-user"},
     // 9e option
@@ -24,15 +22,15 @@ export const menuOptionsPetit = [
     // 8e option
     {chemin : "/utilisateurs", icone : "fa fa-user"}, 
     // 7e option
-    {chemin : "/jeux", icone : "fa fa-gamepad"}, 
+    {chemin : "/jdr", icone : "fa-duotone fa-solid fa-dice-d20"}, 
     // 6e option
-    {chemin : "/langues", icone : "fa fa-language"}, 
+    {chemin : "/langues", icone : "fa-duotone fa-solid fa-language"}, 
     // 5e option
-    {chemin : "/todolist", icone : "fa fa-list-check"},
+    {chemin : "/ecriture", icone : "fa-duotone fa-solid fa-typewriter"},
     // 4e option
-    {chemin : "/ecriture", icone : "fa fa-feather"},
+    {chemin : "/todolist", icone : "fa-duotone fa-solid fa-clipboard-list-check"},
     // 3e option
-    {chemin : "/calories", icone : "fa fa-apple-whole"}
+    {chemin : "/calories", icone : "fa-duotone fa-solid fa-salad"}
 ]
 
 // Gestion des dates
@@ -103,6 +101,21 @@ export const dayOfWeek = [
     "Vendredi",
     "Samedi"
 ]
+
+export const dayOfWeekSundaySeven = [
+    "Dimanche",
+    "Lundi",
+    "Mardi",
+    "Mercredi",
+    "Jeudi",
+    "Vendredi",
+    "Samedi",
+    "Dimanche"
+]
+
+export function displayDateDayMonth(day, month) {
+    return(<>{first(day)} {mois[month].label.toLowerCase()}</>)
+}
   
 export function displayDate(date) {
     return(<>{dayOfWeek[date.getDay()]} {first(date.getDate())} {mois[date.getMonth()].label.toLowerCase()} {date.getFullYear()}</>)
@@ -172,8 +185,8 @@ export function paramDMYDate(aDate) {
 }
 
 //Poids
-export const SURPOIDS = decimalRound(30 * (1.7**2), 1)
-export const NORMAL = decimalRound(25 * (1.7**2), 1)
+export const SURPOIDS = decimalRound(30 * (1.68**2), 1)
+export const NORMAL = decimalRound(25 * (1.68**2), 1)
 export const METABOLISME = 2200
 export const CALORIES_PAR_KG = 7700
 
@@ -185,6 +198,11 @@ export function decimalRound(num, digits) {
     var hundredPower = 10**digits
 
     return Math.round((num + Number.EPSILON) * hundredPower) / hundredPower
+}
+
+//String display
+export function capitalizeOnlyFirstLetter(val) {
+    return String(val).charAt(0).toUpperCase() + String(val).slice(1).toLowerCase();
 }
 
 //Options d'affichage des graphiques

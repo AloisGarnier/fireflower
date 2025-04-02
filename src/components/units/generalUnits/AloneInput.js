@@ -19,9 +19,7 @@ export default function AloneInput(props) {
                 <div class="input-group">
                     <input name="alone" type="label" class="form-control" value={props.inputValue} onChange={event => props.setInputValue(event.target.value)}/>
                     {cst.unite(props)}
-                </div>
-                <div class="input-group d-flex flex-row justify-content-end w-100 my-2">
-                    <button class="badge rounded-pill bg-info justify-self-end" onClick={() => props.click(props.inputValue)}>Valider</button>
+                    <button class="transparent-button blue ms-5" onClick={() => props.click(props.inputValue)}><i class="fa-duotone fa-solid fa-floppy-disk large-icon"></i></button>
                 </div>
             </div>
         </div>

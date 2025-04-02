@@ -31,7 +31,7 @@ export default function Calendrier(props) {
                 domain={props.domain}
                 setHasChanged={setHasChanged}
             />
-            <TachesCalendrier domain={props.domain}/>
+            <TachesCalendrier domain={props.domain} setHasChanged={setHasChanged}/>
         </div> 
     );
 }

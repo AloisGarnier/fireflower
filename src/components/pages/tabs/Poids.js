@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react"
-import LineChart from "../units/generalUnits/LineChart"
+import LineChart from "../../units/generalUnits/LineChart"
 import Select from 'react-select'
 
-import * as cst from "../constants"
+import * as cst from "../../constants"
 
 export default function Poids(props) {
 

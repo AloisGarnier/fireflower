@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react"
-import LineChart from "../units/generalUnits/LineChart"
+import LineChart from "../../units/generalUnits/LineChart"
 import Select from 'react-select'
 
-import * as cst from "../constants"
-
-import TableRecap from "../units/generalUnits/TableRecap"
-import NouveauLivre from "../units/specific/NouveauLivre"
+import * as cst from "../../constants"
 
 export default function Ecriture(props) {
 
@@ -123,38 +120,17 @@ export default function Ecriture(props) {
         }
     }
 
-    function bookTable() {
-        var bookData = []
-        for(var i=0; i<books.length; i++) {
-            bookData.push([books[i].label])
-        }
-        return bookData
-    }
-
     return(
-        <div class="d-flex sm-col-lg-row">
-            <div class="d-flex flex-column align-self-center align-items-center justify-items-center mx-5">
-                {displayTopButtons()}
-                <LineChart
-                    titre="Ecriture du roman"
-                    titreX="Date"
-                    titreY="mots"
-                    titreSeries={currentTitle()}
-                    donneeSeries={[populateSeries()]}
-                />
-                {displayBottomInfo()}
-            </div>
-            <div class="d-flex flex-column align-self-center align-items-center justify-items-center mx-5">
-                <label class="my-notes">Liste des romans :</label>
-                <TableRecap 
-                    titreColonnes={["Titre"]}
-                    donnees={bookTable()}
-                />
-                <label class="my-notes">Ajouter un nouveau roman :</label>
-                <NouveauLivre 
-                    domain={props.domain}
-                />     
-            </div>
+        <div class="d-flex flex-column align-self-center align-items-center justify-items-center mx-5">
+            {displayTopButtons()}
+            <LineChart
+                titre="Ecriture du roman"
+                titreX="Date"
+                titreY="mots"
+                titreSeries={currentTitle()}
+                donneeSeries={[populateSeries()]}
+            />
+            {displayBottomInfo()}
         </div>
         
     )

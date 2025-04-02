@@ -1,13 +1,12 @@
 import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
 import CalendrierWidget from "../calendrier/CalendrierWidget"
 
 import * as cst from "../../constants"
 
-
 /*
  * Props :
  *  - domain
+ *  - trigger
  */
 export default function NouvelleTache(props) {
 
@@ -16,7 +15,9 @@ export default function NouvelleTache(props) {
 
     const backUrl = props.domain + "/todo/"
 
-    let navigate = useNavigate()
+    function refresh() {
+        setTimeout(function(){props.trigger(bool => !bool)},1000)
+    }
 
     function sendNewTask() {
         var url = cst.paramDMYDate(deadline) + "/" + name
@@ -25,7 +26,7 @@ export default function NouvelleTache(props) {
             headers: { 'Content-Type': 'application/json' },
         }
         fetch(backUrl + "newTask/" + url, requestOptions)
-            .then(setTimeout(function(){navigate(0)},1000))
+            .then(() => refresh())
     }
     
     return(
