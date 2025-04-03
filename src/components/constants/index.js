@@ -14,25 +14,25 @@ export const defaultOption = {chemin : "/", icone : "fa-duotone fa-solid fa-ban"
 // Options du menu principal responsive
 export const menuOptionsPetit = [
     // 2e option
-    menuOptions[2]??defaultOption,
-    // 1re option
     menuOptions[1]??defaultOption,
+    // 1re option
+    menuOptions[0]??defaultOption,
     // N'apparait pas 
-    menuOptions[10]??defaultOption,
-    // 9e option
     menuOptions[9]??defaultOption,
-    // 8e option
+    // 9e option
     menuOptions[8]??defaultOption,
-    // 7e option
+    // 8e option
     menuOptions[7]??defaultOption,
-    // 6e option
+    // 7e option
     menuOptions[6]??defaultOption,
-    // 5e option
+    // 6e option
     menuOptions[5]??defaultOption,
-    // 4e option
+    // 5e option
     menuOptions[4]??defaultOption,
-    // 3e option
+    // 4e option
     menuOptions[3]??defaultOption,
+    // 3e option
+    menuOptions[2]??defaultOption,
 ]
 
 // Gestion des dates
