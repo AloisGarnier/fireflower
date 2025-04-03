@@ -9,27 +9,15 @@ import AnnivRecap from "./tabs/AnnivRecap"
 export default function Options(props) {
 
     function getTabName() {
+        return ["Romans", "Aliments", "Sport", "Anniversaires"]
+    }
+
+    function getTabIcon() {
         let display = []
-        display.push(
-            <div class="d-flex flex-row justify-content-around">
-                <i class="fa-duotone fa-solid fa-typewriter"></i>Romans<i class="fa-duotone fa-solid fa-typewriter"></i>
-            </div>
-        )
-        display.push(
-            <div class="d-flex flex-row justify-content-around">
-                <i class="fa-duotone fa-solid fa-drumstick-bite"></i>Aliments<i class="fa-duotone fa-solid fa-drumstick-bite"></i>
-            </div>
-        )
-        display.push(
-            <div class="d-flex flex-row justify-content-around">
-                <i class="fa-duotone fa-solid fa-dumbbell"></i>Sport<i class="fa-duotone fa-solid fa-dumbbell"></i>
-            </div>
-        )
-        display.push(
-            <div class="d-flex flex-row justify-content-around">
-                <i class="fa-duotone fa-solid fa-cake-candles"></i>Anniversaires<i class="fa-duotone fa-solid fa-cake-candles"></i>
-            </div>
-        )
+        display.push(<i class="fa-duotone fa-solid fa-typewriter"></i>)
+        display.push(<i class="fa-duotone fa-solid fa-drumstick-bite"></i>)
+        display.push(<i class="fa-duotone fa-solid fa-dumbbell"></i>)
+        display.push(<i class="fa-duotone fa-solid fa-cake-candles"></i>)
         return display
     }
 
@@ -44,8 +32,10 @@ export default function Options(props) {
     
     return(
         <Tabs 
-        domain={props.domain}
-        tabName={getTabName()}
-        tabContent={getTabContent()}/>
+            domain={props.domain}
+            tabName={getTabName()}
+            tabIcon={getTabIcon()}
+            tabContent={getTabContent()}
+        />
     )
 }

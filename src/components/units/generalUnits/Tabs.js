@@ -14,66 +14,28 @@ export default function Tabs(props) {
         return(props.tabContent[display])
     }
 
-    function displayOptions() {
-        switch(props.tabName.length) {
-            case 1:
-                return(
-                    <>
-                        <input type="radio" class="btn-check" id="btn0" checked={display == 0} onClick={() => setDisplay(0)}/>
-                        <label class="btn btn-outline-light" for="btn0">{props.tabName[0]}</label>
-                    </>
-                )
-            case 2:
-                return(
-                    <>
-                        <input type="radio" class="btn-check" id="btn0" checked={display == 0} onClick={() => setDisplay(0)}/>
-                        <label class="btn btn-outline-light" for="btn0">{props.tabName[0]}</label>
-                        <input type="radio" class="btn-check" id="btn1" checked={display == 1} onClick={() => setDisplay(1)}/>
-                        <label class="btn btn-outline-light" for="btn1">{props.tabName[1]}</label>
-                    </>
-                )
-            case 3:
-                return(
-                    <>
-                        <input type="radio" class="btn-check" id="btn0" checked={display == 0} onClick={() => setDisplay(0)}/>
-                        <label class="btn btn-outline-light" for="btn0">{props.tabName[0]}</label>
-                        <input type="radio" class="btn-check" id="btn1" checked={display == 1} onClick={() => setDisplay(1)}/>
-                        <label class="btn btn-outline-light" for="btn1">{props.tabName[1]}</label>
-                        <input type="radio" class="btn-check" id="btn2" checked={display == 2} onClick={() => setDisplay(2)}/>
-                        <label class="btn btn-outline-light" for="btn2">{props.tabName[2]}</label>
-                    </>
-                )
-            case 4:
-                return(
-                    <>
-                        <input type="radio" class="btn-check" id="btn0" checked={display == 0} onClick={() => setDisplay(0)}/>
-                        <label class="btn btn-outline-light" for="btn0">{props.tabName[0]}</label>
-                        <input type="radio" class="btn-check" id="btn1" checked={display == 1} onClick={() => setDisplay(1)}/>
-                        <label class="btn btn-outline-light" for="btn1">{props.tabName[1]}</label>
-                        <input type="radio" class="btn-check" id="btn2" checked={display == 2} onClick={() => setDisplay(2)}/>
-                        <label class="btn btn-outline-light" for="btn2">{props.tabName[2]}</label>
-                        <input type="radio" class="btn-check" id="btn3" checked={display == 3} onClick={() => setDisplay(3)}/>
-                        <label class="btn btn-outline-light" for="btn3">{props.tabName[3]}</label>
-                    </>
-                )
-            case 5:
-                return(
-                    <>
-                        <input type="radio" class="btn-check" id="btn0" checked={display == 0} onClick={() => setDisplay(0)}/>
-                        <label class="btn btn-outline-light" for="btn0">{props.tabName[0]}</label>
-                        <input type="radio" class="btn-check" id="btn1" checked={display == 1} onClick={() => setDisplay(1)}/>
-                        <label class="btn btn-outline-light" for="btn1">{props.tabName[1]}</label>
-                        <input type="radio" class="btn-check" id="btn2" checked={display == 2} onClick={() => setDisplay(2)}/>
-                        <label class="btn btn-outline-light" for="btn2">{props.tabName[2]}</label>
-                        <input type="radio" class="btn-check" id="btn3" checked={display == 3} onClick={() => setDisplay(3)}/>
-                        <label class="btn btn-outline-light" for="btn3">{props.tabName[3]}</label>
-                        <input type="radio" class="btn-check" id="btn4" checked={display == 4} onClick={() => setDisplay(4)}/>
-                        <label class="btn btn-outline-light" for="btn4">{props.tabName[4]}</label>
-                    </>
-                )
-            default:
-                break
+    function displayLabel(i) {
+        if(window.innerWidth >= 600) {
+            return(
+                <div class="d-flex flex-row justify-content-around">
+                    {props.tabIcon[i]}{props.tabName[i]}{props.tabIcon[i]}
+                </div>
+            )
         }
+        return(props.tabIcon[i])
+    }
+
+    function displayOptions() {
+        let displayTabs = []
+        for(let i=0; i<props.tabName.length; i++) {
+            displayTabs.push(
+                <>
+                    <input type="radio" class="btn-check" id={"btn" + i} checked={display == i} onClick={() => setDisplay(i)}/>
+                    <label class="btn btn-outline-light" for={"btn" + i}>{displayLabel(i)}</label>
+                </>
+            )
+        }
+        return displayTabs
     }
 
     return(

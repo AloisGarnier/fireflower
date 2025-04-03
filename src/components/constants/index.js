@@ -9,28 +9,30 @@ export const menuOptions = [
     {chemin : "/options", icone : "fa-duotone fa-solid fa-gears", nom : "Options"},
 ]
 
+export const defaultOption = {chemin : "/", icone : "fa-duotone fa-solid fa-ban"}
+
 // Options du menu principal responsive
 export const menuOptionsPetit = [
     // 2e option
-    {chemin : "/poids", icone : "fa-duotone fa-solid fa-weight-scale"},
+    menuOptions[2]??defaultOption,
     // 1re option
-    {chemin : "/calendrier", icone : "fa-duotone fa-solid fa-calendar-days"},
+    menuOptions[1]??defaultOption,
     // N'apparait pas 
-    {chemin : "/utilisateurs", icone : "fa fa-user"},
+    menuOptions[10]??defaultOption,
     // 9e option
-    {chemin : "/options", icone : "fa fa-gears"},
+    menuOptions[9]??defaultOption,
     // 8e option
-    {chemin : "/utilisateurs", icone : "fa fa-user"}, 
+    menuOptions[8]??defaultOption,
     // 7e option
-    {chemin : "/jdr", icone : "fa-duotone fa-solid fa-dice-d20"}, 
+    menuOptions[7]??defaultOption,
     // 6e option
-    {chemin : "/langues", icone : "fa-duotone fa-solid fa-language"}, 
+    menuOptions[6]??defaultOption,
     // 5e option
-    {chemin : "/ecriture", icone : "fa-duotone fa-solid fa-typewriter"},
+    menuOptions[5]??defaultOption,
     // 4e option
-    {chemin : "/todolist", icone : "fa-duotone fa-solid fa-clipboard-list-check"},
+    menuOptions[4]??defaultOption,
     // 3e option
-    {chemin : "/calories", icone : "fa-duotone fa-solid fa-salad"}
+    menuOptions[3]??defaultOption,
 ]
 
 // Gestion des dates

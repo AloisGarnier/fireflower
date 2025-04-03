@@ -8,22 +8,14 @@ import Calories from "./tabs/Calories"
 export default function Stats(props) {
 
     function getTabName() {
+        return ["Ecriture", "Poids", "Calories"]
+    }
+
+    function getTabIcon() {
         let display = []
-        display.push(
-            <div class="d-flex flex-row justify-content-around">
-                <i class="fa-duotone fa-solid fa-typewriter"></i>Romans<i class="fa-duotone fa-solid fa-typewriter"></i>
-            </div>
-        )
-        display.push(
-            <div class="d-flex flex-row justify-content-around">
-                <i class="fa-duotone fa-solid fa-weight-scale"></i>Poids<i class="fa-duotone fa-solid fa-weight-scale"></i>
-            </div>
-        )
-        display.push(
-            <div class="d-flex flex-row justify-content-around">
-                <i class="fa-duotone fa-solid fa-salad"></i>Calories<i class="fa-duotone fa-solid fa-salad"></i>
-            </div>
-        )
+        display.push(<i class="fa-duotone fa-solid fa-typewriter"></i>)
+        display.push(<i class="fa-duotone fa-solid fa-weight-scale"></i>)
+        display.push(<i class="fa-duotone fa-solid fa-salad"></i>)
         return display
     }
 
@@ -39,6 +31,7 @@ export default function Stats(props) {
         <Tabs 
         domain={props.domain}
         tabName={getTabName()}
+        tabIcon={getTabIcon()}
         tabContent={getTabContent()}/>
     )
 }
