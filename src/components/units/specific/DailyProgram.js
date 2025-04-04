@@ -61,7 +61,6 @@ export default function DailyProgram(props) {
             headers: { 'Content-Type': 'application/json' },
         }
         var endUrl = "addProgramExercise/" + (props.day+1) + "/" + (exercise.value ?? 1) + "/" + minutes 
-        console.log(exercise)
         fetch(sportUrl + endUrl, requestOptions)
             .then(() => refresh())
     }
