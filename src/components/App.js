@@ -16,8 +16,8 @@ import Options from "./pages/Options.js";
 
 export default function App() {
 
-  const domain = "http://localhost:8081"
-  //const domain = "http://34.155.93.110:8081"
+  //const domain = "http://localhost:8081"
+  const domain = "http://34.155.93.110:8081"
 
   const bdayUpdateUrl = domain + "/birthday/update"
   const sportUpdateUrl = domain + "/sport/update"
