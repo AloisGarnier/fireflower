@@ -63,6 +63,7 @@ export default function RepasInput(props) {
             label={displayRepas()}
             options={allAliments}
             click={sendRepas}
+            default="1"
         />
     )
 }

@@ -51,6 +51,7 @@ export default function SportInput(props) {
             label="Sport"
             options={allEx}
             click={sendSport}
+            default="1"
         />
     )
 }

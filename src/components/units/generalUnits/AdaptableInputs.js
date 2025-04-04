@@ -9,6 +9,7 @@ import * as cst from "../../constants"
  *   - unit (unité de l'input, si besoin)
  *   - options (options de l'élément sélectionnable)
  *   - click (the function to call on click button)
+ *   - default (if the value must be "1" by default or nothing)
  */ 
 export default function AdaptableInputs(props) {
 
@@ -30,7 +31,7 @@ export default function AdaptableInputs(props) {
         newLines.push(
             <div key={clonedNumber} class="input-group">
                 <CreatableSelect className="min-w-50" options={props.options} defaultValue={props.options[0]} onChange={value => modifyInputChoices(clonedNumber, value)}/>
-                <input type="text" class="form-control" defaultValue={"1"} value={inputValues[clonedNumber]} onChange={event => modifyInputValues(clonedNumber, event.target.value)}/>
+                <input type="text" class="form-control" defaultValue={props.default} value={inputValues[clonedNumber]} onChange={event => modifyInputValues(clonedNumber, event.target.value)}/>
                 {displayUnit()}
             </div>
         )
@@ -39,7 +40,7 @@ export default function AdaptableInputs(props) {
 
     function plusInput() {
         setInputChoices([...inputChoices, 1])
-        setInputValues([...inputValues, "1"])
+        setInputValues([...inputValues, props.default])
         addLine()
     }
 
