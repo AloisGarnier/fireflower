@@ -77,6 +77,10 @@ html {
 	min-width: 50% !important;
 }
 
+.min-w-33 {
+	min-width: 33% !important;
+}
+
 .max-w-50 {
   max-width: 50% !important;
 }

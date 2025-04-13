@@ -6,6 +6,7 @@ export const menuOptions = [
     {chemin : "/stats", icone : "fa-duotone fa-solid fa-chart-user", nom : "Statistiques"},
     {chemin : "/todolist", icone : "fa-duotone fa-solid fa-clipboard-list-check", nom : "À faire"},
     {chemin : "/langues", icone : "fa-duotone fa-solid fa-language", nom : "Langues"},
+    {chemin : "/election", icone : "fa-duotone fa-solid fa-landmark", nom : "Élections"},
     {chemin : "/options", icone : "fa-duotone fa-solid fa-gears", nom : "Options"},
 ]
 

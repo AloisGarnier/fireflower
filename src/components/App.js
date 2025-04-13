@@ -13,6 +13,7 @@ import Calendrier from "./pages/Calendrier.js"
 import Todolist from "./pages/Todolist.js";
 import Stats from "./pages/Stats.js";
 import Options from "./pages/Options.js";
+import Elections from "./pages/Elections.js";
 
 export default function App() {
 
@@ -73,6 +74,10 @@ export default function App() {
             />}></Route>
             <Route exact path="/options" element={
               <Options
+              domain={domain}
+            />}></Route>
+            <Route exact path="/election" element={
+              <Elections
               domain={domain}
             />}></Route>
           </Routes>
