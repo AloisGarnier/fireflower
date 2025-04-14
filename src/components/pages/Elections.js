@@ -16,7 +16,7 @@ export default function Elections(props) {
 
     function calculateSeats() {
         //Calcul de la prime majoritaire
-        if(liste1 >= liste2) {
+        if(parseInt(liste1) >= parseInt(liste2)) {
             var resultat = [6, 0]
         } else {
             var resultat = [0, 6]
@@ -24,7 +24,7 @@ export default function Elections(props) {
         var remainingSeats = 5
 
         //Répartition des premiers sièges
-        let total = parseInt(liste1)+parseInt(liste2) 
+        let total = parseInt(liste1)+parseInt(liste2)
         let temp1 = Math.floor(5*liste1/total)
         let temp2 = Math.floor(5*liste2/total)
         remainingSeats -= temp1
@@ -36,12 +36,14 @@ export default function Elections(props) {
         while(remainingSeats > 0) {
             var calc1 = liste1/(temp1 + 1)
             var calc2 = liste2/(temp2 + 1)
-            if(calc1 >= calc2) {
+            if(calc1 > calc2 || (calc1 == calc2 && remainingSeats > 1)) {
                 resultat[0]++
                 temp1++
-            } else {
+            } else if(calc1 < calc2){
                 resultat[1]++
                 temp2++
+            } else {
+              resultat.push(1)
             }
             remainingSeats--
         }
@@ -51,7 +53,12 @@ export default function Elections(props) {
 
     function populateData() {
         var resultat = calculateSeats()
-        return [["Liste 1", liste1, "#5D8A3E", resultat[0]], ["Liste 2", liste2, "#723E64", resultat[1]]]
+        if(resultat.length == 2) {
+          return [["Liste 1", liste1, "#5D8A3E", resultat[0]], ["Liste 2", liste2, "#723E64", resultat[1]]]
+        } 
+        if(resultat.length == 3) {
+          return [["Liste 1", liste1, "#5D8A3E", resultat[0]], ["Égalité (attribué au plus âgé)", 0, "#d3d3d3", resultat[2]], ["Liste 2", liste2, "#723E64", resultat[1]]]
+        }
     }
 
     function displayResult() {
